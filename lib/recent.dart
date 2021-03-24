@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SignInPage extends StatelessWidget {
+import 'constants.dart';
+
+class Recent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
         leading: IconButton(
           icon: Icon(Icons.chevron_left_rounded ),
           iconSize: 30.0,
@@ -13,7 +16,7 @@ class SignInPage extends StatelessWidget {
           onPressed: () {},
         ),
         title: Text(
-          "Sign In",
+          "Recent",
           style: TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,

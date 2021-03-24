@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
 
 class Myaccount extends StatefulWidget {
   @override
@@ -15,8 +14,8 @@ class _MyaccountState extends State<Myaccount> {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          iconSize: 28.0,
+          icon: Icon(Icons.chevron_left_rounded ),
+          iconSize: 30.0,
           color: Colors.white,
           onPressed: () {},
         ),
@@ -29,14 +28,22 @@ class _MyaccountState extends State<Myaccount> {
           ),
         ),
         elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+          icon: Icon(Icons.more_horiz),
+          iconSize: 30.0,
+          color: Colors.white,
+          onPressed: () {},
+        ),
+        ],
       ),
       body: Container(
         padding: EdgeInsets.only(top: 40),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
+            topLeft: Radius.circular(50.0),
+            topRight: Radius.circular(50.0),
           ),
         ),
         alignment: Alignment.center,
@@ -64,7 +71,8 @@ class _MyaccountState extends State<Myaccount> {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(
-                          "https://i.pinimg.com/564x/0b/08/06/0b08065d6eb81911d28a539a0fdbb1ae.jpg"),
+                          "https://i.pinimg.com/564x/0b/08/06/0b08065d6eb81911d28a539a0fdbb1ae.jpg"
+                      ),
                     ),
                   ),
                 )
@@ -103,10 +111,75 @@ class _MyaccountState extends State<Myaccount> {
                   TextStyle(
                     fontWeight: FontWeight.bold, 
                     color: Colors.black.withOpacity(0.6),
-                    fontSize: 20,
+                    fontSize: 16,
                   ),
             ),
-            
+            SizedBox(
+              height: 40,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                FlatButton(
+                      onPressed: () {},
+                      child: Icon(
+                          Icons.play_circle_fill_rounded,
+                          color: Colors.green,
+                          size: 40.0,
+                          
+                      )),
+                  FlatButton(
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.favorite,
+                          color: Colors.redAccent,
+                          size: 40.0,
+                      )),
+                  FlatButton(
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.access_time,
+                          color: Colors.blueAccent,
+                          size: 40.0,
+                      )),
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Text(
+                    '     All',
+                  ),
+                  Text(
+                    '       Favorites',
+                  ),
+                  Text(
+                    '    Recent',
+                  ),
+                ],
+              ),
+            SizedBox(
+              height: 40,
+            ),
+            Text(
+              'Playlists',
+              style:
+                  TextStyle(
+                    fontWeight: FontWeight.bold, 
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+              textAlign: TextAlign.left,
+            ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    
+                  ],
+            ),
           ],
           
         ),
@@ -115,3 +188,4 @@ class _MyaccountState extends State<Myaccount> {
     );
   }
 }
+

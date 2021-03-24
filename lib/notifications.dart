@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SignInPage extends StatelessWidget {
+class Notifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +13,7 @@ class SignInPage extends StatelessWidget {
           onPressed: () {},
         ),
         title: Text(
-          "Sign In",
+          "Notifications",
           style: TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,
