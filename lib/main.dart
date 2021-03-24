@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.saralaTextTheme(Theme.of(context).textTheme),
           primaryColor: kSecondaryColor,
         ),
-        home: StorytellerPage(),
+        home: HomePage(),
         // routes: {
         //   '/video': (ctx) => SongScreen()
         // },

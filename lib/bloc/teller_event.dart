@@ -10,4 +10,18 @@ class FetchedEvent extends TellerEvent{
   List<Object> get props => [];
 }
 
+class PopularEvent extends TellerEvent{
+  PopularEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class RecentEvent extends TellerEvent{
+  RecentEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
 

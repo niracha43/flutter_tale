@@ -5,6 +5,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 List<Storyteller> storytellerFromJson(String str) => List<Storyteller>.from(json.decode(str).map((x) => Storyteller.fromJson(x)));
 
@@ -23,7 +24,7 @@ class Storyteller  extends Equatable{
     String stName;
     String stChannel;
     String imageUrl;
-    String stColor;
+    Color stColor;
 
     factory Storyteller.fromJson(Map<String, dynamic> json) => Storyteller(
         id: json["id"] == null ? null : json["id"],

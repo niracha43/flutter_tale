@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/gestures.dart';
 import 'package:meta/meta.dart';
 import 'package:mobile_project/models/teller.dart';
+import 'package:mobile_project/models/tellerList.dart';
 
 part 'teller_event.dart';
 part 'teller_state.dart';
@@ -17,8 +17,9 @@ class TellerBloc extends Bloc<TellerEvent, TellerState> {
     super.onEvent(event);
     print(event);
   }
+
   @override
-  void onChange(Change<TellerState> change){
+  void onChange(Change<TellerState> change) {
     super.onChange(change);
     print(change);
   }
@@ -39,22 +40,37 @@ class TellerBloc extends Bloc<TellerEvent, TellerState> {
   Stream<TellerState> mapEventToState(
     TellerEvent event,
   ) async* {
-    if(event is FetchedEvent){
-      List<Storyteller> StoryList = <Storyteller>[];
-      Storyteller tell =  Storyteller();
-      tell.id = 1;
-      tell.stName = "xxxx";
-      tell.stChannel = "dddd";
-      tell.imageUrl = "sss";
-      tell.stColor = "kkkkk";
+    if (event is FetchedEvent) {
+      List<Storyteller> _storyList = tellerLists;
 
-      StoryList.add(tell);
-      yield StoryList.isEmpty
-          ? state.coppyWith(storyteller:[])
+      yield _storyList.isEmpty
+          ? state.coppyWith(storyteller: [])
           : state.coppyWith(
-            status:  ProjectFetchedStatus.success,
-            storyteller:  StoryList,
-          );
+              status: ProjectFetchedStatus.success,
+              storyteller: _storyList,
+            );
+    }
+    if (event is PopularEvent) {
+      List<Storyteller> _storyList = popularLists;
+
+      yield _storyList.isEmpty
+          ? state.coppyWith(storyteller: [])
+          : state.coppyWith(
+              status: ProjectFetchedStatus.success,
+              storyteller: _storyList,
+              situation: Situation.popular,
+            );
+    }
+    if (event is RecentEvent) {
+      List<Storyteller> _storyList = recentLists;
+
+      yield _storyList.isEmpty
+          ? state.coppyWith(storyteller: [])
+          : state.coppyWith(
+              status: ProjectFetchedStatus.success,
+              storyteller: _storyList,
+              situation: Situation.recent,
+            );
     }
   }
 }
