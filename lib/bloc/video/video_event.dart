@@ -1,23 +1,23 @@
-part of 'teller_bloc.dart';
+part of 'video_bloc.dart';
 
 @immutable
-abstract class TellerEvent {}
+abstract class VideoEvent {}
 
-class FetchedEvent extends TellerEvent{
+class FetchedEvent extends VideoEvent{
   FetchedEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class PopularEvent extends TellerEvent{
+class PopularEvent extends VideoEvent{
   PopularEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class RecentEvent extends TellerEvent{
+class RecentEvent extends VideoEvent{
   RecentEvent();
 
   @override

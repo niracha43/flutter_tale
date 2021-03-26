@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_project/bloc/teller_bloc.dart';
 import 'package:mobile_project/models/teller.dart';
+import 'bloc/teller/teller_bloc.dart';
 import 'constants.dart';
 import 'constants.dart';
 
@@ -15,12 +15,12 @@ class _StorytellerState extends State<StorytellerPage> {
   @override
   void initState() {
     tellerBloc = BlocProvider.of<TellerBloc>(context);
-    tellerBloc..add(FetchedEvent());
+    tellerBloc..add(FetchedTellerEvent());
     super.initState();
   }
   
   Future handleRefresh(){
-    tellerBloc..add(FetchedEvent());
+    tellerBloc..add(FetchedTellerEvent());
     return null;
   }
 

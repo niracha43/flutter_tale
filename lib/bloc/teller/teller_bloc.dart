@@ -40,7 +40,7 @@ class TellerBloc extends Bloc<TellerEvent, TellerState> {
   Stream<TellerState> mapEventToState(
     TellerEvent event,
   ) async* {
-    if (event is FetchedEvent) {
+    if (event is FetchedTellerEvent) {
       List<Storyteller> _storyList = tellerLists;
 
       yield _storyList.isEmpty
@@ -50,27 +50,27 @@ class TellerBloc extends Bloc<TellerEvent, TellerState> {
               storyteller: _storyList,
             );
     }
-    if (event is PopularEvent) {
-      List<Storyteller> _storyList = popularLists;
+    // if (event is PopularEvent) {
+    //   List<Storyteller> _storyList = popularLists;
 
-      yield _storyList.isEmpty
-          ? state.coppyWith(storyteller: [])
-          : state.coppyWith(
-              status: ProjectFetchedStatus.success,
-              storyteller: _storyList,
-              situation: Situation.popular,
-            );
-    }
-    if (event is RecentEvent) {
-      List<Storyteller> _storyList = recentLists;
+    //   yield _storyList.isEmpty
+    //       ? state.coppyWith(storyteller: [])
+    //       : state.coppyWith(
+    //           status: ProjectFetchedStatus.success,
+    //           storyteller: _storyList,
+    //           situation: Situation.popular,
+    //         );
+    // }
+    // if (event is RecentEvent) {
+    //   List<Storyteller> _storyList = recentLists;
 
-      yield _storyList.isEmpty
-          ? state.coppyWith(storyteller: [])
-          : state.coppyWith(
-              status: ProjectFetchedStatus.success,
-              storyteller: _storyList,
-              situation: Situation.recent,
-            );
-    }
+    //   yield _storyList.isEmpty
+    //       ? state.coppyWith(storyteller: [])
+    //       : state.coppyWith(
+    //           status: ProjectFetchedStatus.success,
+    //           storyteller: _storyList,
+    //           situation: Situation.recent,
+    //         );
+    // }
   }
 }

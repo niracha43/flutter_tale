@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_project/bloc/teller_bloc.dart';
 
+import 'bloc/teller/teller_bloc.dart';
+import 'bloc/video/video_bloc.dart';
 import 'constants.dart';
 import 'models/tellerList.dart';
+import 'models/videoList.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,12 +13,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  VideoBloc videoBloc;
   TellerBloc tellerBloc;
-@override
+  @override
   void initState() {
-   tellerBloc=BlocProvider.of<TellerBloc>(context);
-   tellerBloc.add(PopularEvent());
-   
+    videoBloc = BlocProvider.of<VideoBloc>(context);
+    tellerBloc = BlocProvider.of<TellerBloc>(context);
+    videoBloc.add(PopularEvent());
+    tellerBloc.add(FetchedTellerEvent());
+
     super.initState();
   }
 
@@ -57,12 +62,12 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildNavigationRail(context),
-                  _buildPlaylistAndSongs(size, tellerBloc)
+                  _buildPlaylistAndSongs(size, videoBloc)
                 ],
               ),
             ),
-           // _buildCurrentPlaying(size),
-           // _buildBottomBar(size)
+            // _buildCurrentPlaying(size),
+            // _buildBottomBar(size)
           ],
         ),
       ),
@@ -79,9 +84,9 @@ class _HomePageState extends State<HomePage> {
           print("index ${index}");
         });
         if (index == 0) {
-          tellerBloc..add(PopularEvent());
+          videoBloc..add(PopularEvent());
         } else {
-          tellerBloc..add(RecentEvent());
+          videoBloc..add(RecentEvent());
         }
       },
       groupAlignment: -0.1,
@@ -109,7 +114,6 @@ class _HomePageState extends State<HomePage> {
       ),
       destinations: [
         NavigationRailDestination(
-
           icon: SizedBox.shrink(),
           label: RotatedBox(
             quarterTurns: -1,
@@ -134,35 +138,39 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Widget _buildPlaylistAndSongs(Size size, TellerBloc tellerBloc) {
+Widget _buildPlaylistAndSongs(Size size, VideoBloc videoBloc) {
   return Column(
     children: [
       Container(
         height: 0.35 * size.height,
         width: size.width * 0.8,
         // color: Colors.purple,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: popularLists.length,
-          itemBuilder: (context, index) => _buildPlaylistItem(
-              image: tellerLists[index].imageUrl,
-              title: tellerLists[index].stName),
+        child: BlocBuilder<TellerBloc, TellerState>(
+          builder: (context, state) {
+            return ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: state.storyteller.length,
+              itemBuilder: (context, index) => _buildPlaylistItem(
+                  image: state.storyteller[index].imageUrl,
+                  title: state.storyteller[index].stName),
+            );
+          },
         ),
       ),
       Container(
         height: 0.35 * size.height,
         width: size.width * 0.8,
-        child: BlocBuilder<TellerBloc, TellerState>(
-         buildWhen: (previous, current) => previous.situation != current.situation,
-         bloc: tellerBloc,
+        child: BlocBuilder<VideoBloc, VideoState>(
+          buildWhen: (previous, current) =>
+              previous.situation != current.situation,
+          bloc: videoBloc,
           builder: (context, state) {
             return ListView.builder(
-              itemCount: state.storyteller.length,
+              itemCount: state.videoList.length,
               itemBuilder: (context, index) => _buildSonglistItem(
-                image: state.storyteller[index].imageUrl,
-                title: state.storyteller[index].stName,
-                subtitle: state.storyteller[index].stChannel,
-        
+                image: state.videoList[index].imageUrl,
+                title: state.videoList[index].videoName,
+                subtitle: state.videoList[index].videoChannel,
               ),
             );
           },
