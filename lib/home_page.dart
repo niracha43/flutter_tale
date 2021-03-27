@@ -6,6 +6,7 @@ import 'bloc/video/video_bloc.dart';
 import 'constants.dart';
 import 'models/tellerList.dart';
 import 'models/videoList.dart';
+import 'storyteller_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -66,8 +67,8 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            // _buildCurrentPlaying(size),
-            // _buildBottomBar(size)
+            //_buildCurrentPlaying(size),
+            //_buildBottomBar(size)
           ],
         ),
       ),
@@ -95,22 +96,27 @@ class _HomePageState extends State<HomePage> {
           TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
       unselectedLabelTextStyle:
           TextStyle(color: kLightColor, fontWeight: FontWeight.bold),
-      leading: Column(
-        children: [
-          Icon(
-            Icons.playlist_play,
-            color: kPrimaryColor,
-          ),
-          SizedBox(height: 5.0),
-          RotatedBox(
-            quarterTurns: -1,
-            child: Text(
-              'Storyteler',
-              style:
-                  TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+      leading: InkWell(
+        onTap: (){
+          Navigator.of(context).pushNamed(StorytellerPage.routesName);
+        },
+              child: Column(
+          children: [
+            Icon(
+              Icons.playlist_play,
+              color: kPrimaryColor,
             ),
-          )
-        ],
+            SizedBox(height: 5.0),
+            RotatedBox(
+              quarterTurns: -1,
+              child: Text(
+                'Storyteler',
+                style:
+                    TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
+        ),
       ),
       destinations: [
         NavigationRailDestination(

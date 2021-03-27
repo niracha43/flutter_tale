@@ -43,20 +43,20 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
       List<VideoList> _videoList = videoList;
 
       yield _videoList.isEmpty
-          ? state.coppyWith(storyteller: [])
+          ? state.coppyWith(videoList: [])
           : state.coppyWith(
               status: ProjectFetchedStatus.success,
-              storyteller: _videoList,
+              videoList: _videoList,
             );
     }
     if (event is PopularEvent) {
       List<VideoList> _videoList = videopopularLists;
 
       yield _videoList.isEmpty
-          ? state.coppyWith(storyteller: [])
+          ? state.coppyWith(videoList: [])
           : state.coppyWith(
               status: ProjectFetchedStatus.success,
-              storyteller: _videoList,
+              videoList: _videoList,
               situation: Situation.popular,
             );
     }
@@ -64,10 +64,10 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
       List<VideoList> _videoList = videorecentLists;
 
       yield _videoList.isEmpty
-          ? state.coppyWith(storyteller: [])
+          ? state.coppyWith(videoList: [])
           : state.coppyWith(
               status: ProjectFetchedStatus.success,
-              storyteller: _videoList,
+              videoList: _videoList,
               situation: Situation.recent,
             );
     }

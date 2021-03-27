@@ -1,5 +1,3 @@
-
-
 import 'package:mobile_project/models/video.dart';
 
 List<VideoList> videoList = [
@@ -7,7 +5,7 @@ List<VideoList> videoList = [
   id : 1,
   videoName : "Niam laus yeej tseem xav deev",
   videoChannel : "Koosloos_Ulias Channel",
-  date : DateTime.parse("2016-03-8T"),
+  date : DateTime.now(),
   imageUrl : "https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.15752-9/158595812_819316935287169_274632067693183425_n.png?_nc_cat=110&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeHXMiBAKKEZcJ1AftyfJV6uArouSWYOn5ICui5JZg6fkjQp0FrB6bVMe4MLnu07R2ZxHokv6aUlO1ZguVfdys5d&_nc_ohc=vrOEnNsbkLwAX--MbfN&_nc_ht=scontent.fbkk5-4.fna&oh=a3be1813fdb2c8e5af200f87b6d4b41a&oe=60745DD2",
   videoUrl : "https://youtu.be/_ClOqGf44Vw"
   ),
@@ -15,7 +13,7 @@ List<VideoList> videoList = [
   id : 2,
   videoName : "Ntxoov Yias The Shaman Warrior",
   videoChannel : "Hmong Bedtime Stories",
-  date : DateTime.parse("2016-03-8T"),
+  date : DateTime.now(),
   imageUrl : "https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.15752-9/158969285_272265401144277_2289902189078273749_n.png?_nc_cat=102&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeFCMvLiYDxj9eMMDz3M0yDr6wFlxDAm_bPrAWXEMCb9s_K-C3DTwSr4fLvCarbWCMvZ54twRgdPN2WUNf3IfY6N&_nc_ohc=fcJPm5-6VZEAX8aSw5b&_nc_ht=scontent.fbkk5-6.fna&oh=97d56b8ea72b72b6441c1ce306af12c9&oe=6073E082",
   videoUrl : "https://youtu.be/clyrQoupTSQ"
 
@@ -24,7 +22,7 @@ List<VideoList> videoList = [
   id : 3,
   videoName : "Mus zov tsov poj ntxoog los",
   videoChannel : "Dab hais hmoob",
-  date : DateTime.parse("2016-03-8T"),
+  date : DateTime.now(),
   imageUrl : "https://i.pinimg.com/564x/5a/2d/f6/5a2df61952626ec0c178d4987714a087.jpg",
   videoUrl : "https://youtu.be/b1Y7tiPaXuE"
   ),
@@ -32,7 +30,7 @@ List<VideoList> videoList = [
   id : 4,
   videoName : "Ua Txhaum Nab Zaj",
   videoChannel : "PHMOOB NOOS HAIS",
-  date : DateTime.parse("2016-03-8T"),
+  date : DateTime.now(),
   imageUrl : "https://i.pinimg.com/564x/f7/21/01/f72101afebd1fbf2c28d3c43b499c211.jpg",
   videoUrl : "https://youtu.be/TEHxWhE8SBU"
   )

@@ -5,7 +5,10 @@ import 'bloc/teller/teller_bloc.dart';
 import 'constants.dart';
 import 'constants.dart';
 
+
+
 class StorytellerPage extends StatefulWidget {
+  static String routesName = "/storytellerpage";
   @override
   _StorytellerState createState() => _StorytellerState();
 }
@@ -30,12 +33,12 @@ class _StorytellerState extends State<StorytellerPage> {
       backgroundColor: kSecondaryColor,
       appBar: AppBar(
         backgroundColor: kSecondaryColor,
-        leading: IconButton(
-          icon: Icon(Icons.chevron_left_rounded),
-          iconSize: 30.0,
-          color: Colors.white,
-          onPressed: () {},
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.chevron_left_rounded),
+        //   iconSize: 30.0,
+        //   color: Colors.white,
+        //   onPressed: () {},
+        // ),
         title: Text(
           "Storyteller",
           style: TextStyle(
@@ -137,7 +140,9 @@ Widget myDetailsContainer1({String stChannel, String stName}) {
           alignment: MainAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
-              onPressed: () => {},
+              onPressed: () => {
+                
+              },
               color: Colors.black54,
               child: Text(
                 '    Show More    ',

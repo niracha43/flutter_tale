@@ -24,4 +24,20 @@ class RecentEvent extends VideoEvent{
   List<Object> get props => [];
 }
 
+class AllEvent extends VideoEvent{
+  AllEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class FavouritesEvent extends VideoEvent{
+  FavouritesEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+
+
 

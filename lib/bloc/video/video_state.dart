@@ -16,12 +16,12 @@ class VideoState extends Equatable {
 
   VideoState coppyWith({
     ProjectFetchedStatus status,
-    List<VideoList> storyteller,
+    List<VideoList> videoList,
     Situation situation,
   }) {
     return VideoState(
       status: status ?? this.status,
-      videoList: storyteller ?? this.videoList,
+      videoList: videoList ?? this.videoList,
       situation: situation?? this.situation,
     );
   }
