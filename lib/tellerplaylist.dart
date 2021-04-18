@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/teller/teller_bloc.dart';
 import 'bloc/video/video_bloc.dart';
 import 'constants.dart';
 
 class TellerPlayList extends StatefulWidget {
+  static String routesName;
+
   @override
   _TellerPlayListState createState() => _TellerPlayListState();
 }
 
 class _TellerPlayListState extends State<TellerPlayList> {
   VideoBloc videoBloc;
-
+  TellerBloc tellerBloc;
   @override
   void initState() {
     videoBloc = BlocProvider.of<VideoBloc>(context);
     videoBloc.add(FetchedEvent());
+    tellerBloc = BlocProvider.of<TellerBloc>(context);
+    tellerBloc.add(FetchedTellerEvent());
   }
 
   @override
@@ -44,24 +49,28 @@ class _TellerPlayListState extends State<TellerPlayList> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    "Playlist",
-                    style: TextStyle(
-                      fontSize: 28.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Image.network(
-                    'https://i.pinimg.com/564x/b8/03/1f/b8031f43ef1237bf96f1c53c1fb28a04.jpg',
-                    width: 200,
-                    height: 200,
-                  ),
-                ],
+              child: BlocBuilder<TellerBloc, TellerState>(
+                builder: (context, state) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Koosloos",
+                        style: TextStyle(
+                          fontSize: 28.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Image.network(
+                        'https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.15752-9/166232112_797043411234904_6598310445283045966_n.png?_nc_cat=101&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGrssWHvfZJ078q5pFj2ySoX7k8hxpB0M5fuTyHGkHQzrZ9FGnogNorA3xjtpjH9v78q6sh1VQnrBVYMuSTB7i9&_nc_ohc=nrjovG3K7F0AX8yxoyc&_nc_ht=scontent.fbkk5-6.fna&oh=932e64855c511908d833309a4e486207&oe=6087645B',
+                        width: 300,
+                        height: 300,
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
             Container(

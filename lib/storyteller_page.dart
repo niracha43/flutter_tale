@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_project/models/teller.dart';
+import 'package:mobile_project/tellerplaylist.dart';
 import 'bloc/teller/teller_bloc.dart';
 import 'constants.dart';
 import 'constants.dart';
@@ -91,57 +92,57 @@ class _StorytellerState extends State<StorytellerPage> {
 
 Widget myDetailsContainer1({String stChannel, String stName}) {
   return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.only(left: 8.0),
-        child: Container(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Container(
+              child: Text(
+            stName,
+            style: TextStyle(
+                color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),
+          )),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          // child: Container(
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //       children: <Widget>[
+          //         Container(child: Text("4.3",
+          //           style: TextStyle(color: Colors.black54, fontSize: 18.0,),)),
+          //         Container(child: Icon(
+          //           Icons.star_rounded, color: Colors.white,
+          //           size: 15.0,),),
+          //         Container(child: Icon(
+          //           Icons.star_rounded, color: Colors.white,
+          //           size: 15.0,),),
+          //         Container(child: Icon(
+          //           Icons.star_rounded, color: Colors.white,
+          //           size: 15.0,),),
+          //         Container(child: Icon(
+          //           Icons.star_rounded, color: Colors.white,
+          //           size: 15.0,),),
+          //         Container(child: Icon(
+          //           Icons.star_half_rounded, color: Colors.white,
+          //           size: 15.0,),),
+          //         Container(child: Text("(321) \u00B7 0.9 mi",
+          //           style: TextStyle(color: Colors.black54, fontSize: 18.0,),)),
+          //       ],)),
+        ),
+        Container(
             child: Text(
-          stName,
+          stChannel,
           style: TextStyle(
-              color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),
         )),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 8.0),
-        // child: Container(
-        //     child: Row(
-        //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //       children: <Widget>[
-        //         Container(child: Text("4.3",
-        //           style: TextStyle(color: Colors.black54, fontSize: 18.0,),)),
-        //         Container(child: Icon(
-        //           Icons.star_rounded, color: Colors.white,
-        //           size: 15.0,),),
-        //         Container(child: Icon(
-        //           Icons.star_rounded, color: Colors.white,
-        //           size: 15.0,),),
-        //         Container(child: Icon(
-        //           Icons.star_rounded, color: Colors.white,
-        //           size: 15.0,),),
-        //         Container(child: Icon(
-        //           Icons.star_rounded, color: Colors.white,
-        //           size: 15.0,),),
-        //         Container(child: Icon(
-        //           Icons.star_half_rounded, color: Colors.white,
-        //           size: 15.0,),),
-        //         Container(child: Text("(321) \u00B7 0.9 mi",
-        //           style: TextStyle(color: Colors.black54, fontSize: 18.0,),)),
-        //       ],)),
-      ),
-      Container(
-          child: Text(
-        stChannel,
-        style: TextStyle(
-            color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),
-      )),
-      Container(
-        child: ButtonBar(
-          alignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              onPressed: () => {
-                
+        Container(
+          child: ButtonBar(
+            alignment: MainAxisAlignment.center,
+            children: <Widget>[
+              RaisedButton(
+                onPressed: () => {
+                  
               },
               color: Colors.black54,
               child: Text(

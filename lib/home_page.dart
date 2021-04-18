@@ -97,10 +97,10 @@ class _HomePageState extends State<HomePage> {
       unselectedLabelTextStyle:
           TextStyle(color: kLightColor, fontWeight: FontWeight.bold),
       leading: InkWell(
-        onTap: (){
+        onTap: () {
           Navigator.of(context).pushNamed(StorytellerPage.routesName);
         },
-              child: Column(
+        child: Column(
           children: [
             Icon(
               Icons.playlist_play,
@@ -111,8 +111,8 @@ class _HomePageState extends State<HomePage> {
               quarterTurns: -1,
               child: Text(
                 'Storyteler',
-                style:
-                    TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: kPrimaryColor, fontWeight: FontWeight.bold),
               ),
             )
           ],
