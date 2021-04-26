@@ -1,24 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-class Myaccount extends StatefulWidget {
+class MyaccountPage extends StatefulWidget {
   @override
   _MyaccountState createState() => _MyaccountState();
 }
 
-class _MyaccountState extends State<Myaccount> {
+class _MyaccountState extends State<MyaccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.chevron_left_rounded ),
-          iconSize: 30.0,
-          color: Colors.white,
-          onPressed: () {},
-        ),
         title: Text(
           "Account",
           style: TextStyle(
@@ -30,11 +23,11 @@ class _MyaccountState extends State<Myaccount> {
         elevation: 0.0,
         actions: <Widget>[
           IconButton(
-          icon: Icon(Icons.more_horiz),
-          iconSize: 30.0,
-          color: Colors.white,
-          onPressed: () {},
-        ),
+            icon: Icon(Icons.more_horiz),
+            iconSize: 30.0,
+            color: Colors.white,
+            onPressed: () {},
+          ),
         ],
       ),
       body: Container(
@@ -71,8 +64,7 @@ class _MyaccountState extends State<Myaccount> {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(
-                          "https://i.pinimg.com/564x/0b/08/06/0b08065d6eb81911d28a539a0fdbb1ae.jpg"
-                      ),
+                          "https://i.pinimg.com/564x/0b/08/06/0b08065d6eb81911d28a539a0fdbb1ae.jpg"),
                     ),
                   ),
                 )
@@ -95,24 +87,21 @@ class _MyaccountState extends State<Myaccount> {
             ),
             Text(
               'Niracha_lee',
-              style:
-                  TextStyle(
-                    fontWeight: FontWeight.bold, 
-                    color: Colors.black,
-                    fontSize: 20
-                  ),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 20),
             ),
             SizedBox(
               height: 8,
             ),
             Text(
               '6231305014@lamduan.mfu.ac.th',
-              style:
-                  TextStyle(
-                    fontWeight: FontWeight.bold, 
-                    color: Colors.black.withOpacity(0.6),
-                    fontSize: 16,
-                  ),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black.withOpacity(0.6),
+                fontSize: 16,
+              ),
             ),
             SizedBox(
               height: 40,
@@ -121,71 +110,64 @@ class _MyaccountState extends State<Myaccount> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 FlatButton(
-                      onPressed: () {},
-                      child: Icon(
-                          Icons.play_circle_fill_rounded,
-                          color: Colors.green,
-                          size: 40.0,
-                          
-                      )),
-                  FlatButton(
-                      onPressed: () {},
-                      child: Icon(
-                        Icons.favorite,
-                          color: Colors.redAccent,
-                          size: 40.0,
-                      )),
-                  FlatButton(
-                      onPressed: () {},
-                      child: Icon(
-                        Icons.access_time,
-                          color: Colors.blueAccent,
-                          size: 40.0,
-                      )),
+                    onPressed: () {},
+                    child: Icon(
+                      Icons.play_circle_fill_rounded,
+                      color: Colors.green,
+                      size: 40.0,
+                    )),
+                FlatButton(
+                    onPressed: () {},
+                    child: Icon(
+                      Icons.favorite,
+                      color: Colors.redAccent,
+                      size: 40.0,
+                    )),
+                FlatButton(
+                    onPressed: () {},
+                    child: Icon(
+                      Icons.access_time,
+                      color: Colors.blueAccent,
+                      size: 40.0,
+                    )),
               ],
             ),
             SizedBox(
               height: 15,
             ),
             Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Text(
-                    '     All',
-                  ),
-                  Text(
-                    '       Favorites',
-                  ),
-                  Text(
-                    '    Recent',
-                  ),
-                ],
-              ),
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text(
+                  '     All',
+                ),
+                Text(
+                  '       Favorites',
+                ),
+                Text(
+                  '    Recent',
+                ),
+              ],
+            ),
             SizedBox(
               height: 40,
             ),
             Text(
               'Playlists',
-              style:
-                  TextStyle(
-                    fontWeight: FontWeight.bold, 
-                    color: Colors.black,
-                    fontSize: 20,
-                  ),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 20,
+              ),
               textAlign: TextAlign.left,
             ),
             Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    
-                  ],
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [],
             ),
           ],
-          
         ),
-        
       ),
     );
   }
 }
-

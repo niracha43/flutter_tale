@@ -7,7 +7,7 @@ List<VideoList> videoList = [
       videoChannel: "Koosloos_Ulias Channel",
       date: DateTime.now(),
       imageUrl:
-          "https://scontent.fbkk5-4.fna.fbcdn.net/v/t1.15752-9/158595812_819316935287169_274632067693183425_n.png?_nc_cat=110&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeHXMiBAKKEZcJ1AftyfJV6uArouSWYOn5ICui5JZg6fkjQp0FrB6bVMe4MLnu07R2ZxHokv6aUlO1ZguVfdys5d&_nc_ohc=vrOEnNsbkLwAX--MbfN&_nc_ht=scontent.fbkk5-4.fna&oh=a3be1813fdb2c8e5af200f87b6d4b41a&oe=60745DD2",
+          "https://i.pinimg.com/564x/49/a3/7b/49a37b0414704a9e069289f56cb319c8.jpg",
       videoUrl: "https://youtu.be/_ClOqGf44Vw"),
   VideoList(
       id: 2,
@@ -15,7 +15,7 @@ List<VideoList> videoList = [
       videoChannel: "Hmong Bedtime Stories",
       date: DateTime.now(),
       imageUrl:
-          "https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.15752-9/158969285_272265401144277_2289902189078273749_n.png?_nc_cat=102&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeFCMvLiYDxj9eMMDz3M0yDr6wFlxDAm_bPrAWXEMCb9s_K-C3DTwSr4fLvCarbWCMvZ54twRgdPN2WUNf3IfY6N&_nc_ohc=fcJPm5-6VZEAX8aSw5b&_nc_ht=scontent.fbkk5-6.fna&oh=97d56b8ea72b72b6441c1ce306af12c9&oe=6073E082",
+          "https://i.pinimg.com/564x/63/78/13/637813fe6eb75dfc620d28e51544716f.jpg",
       videoUrl: "https://youtu.be/clyrQoupTSQ"),
   VideoList(
       id: 3,
@@ -58,7 +58,7 @@ List<VideoList> videopopularLists = [
       videoChannel: "Dab hais hmoob",
       date: DateTime.now(),
       imageUrl:
-          "https://i.pinimg.com/564x/5a/2d/f6/5a2df61952626ec0c178d4987714a087.jpg",
+          "https://i.pinimg.com/564x/bf/1d/51/bf1d51aabe02cb244c1f332b19f805bf.jpg",
       videoUrl: "https://youtu.be/b1Y7tiPaXuE"),
   VideoList(
       id: 4,
@@ -93,7 +93,7 @@ List<VideoList> videorecentLists = [
       videoChannel: "Dab hais hmoob",
       date: DateTime.now(),
       imageUrl:
-          "https://i.pinimg.com/564x/5a/2d/f6/5a2df61952626ec0c178d4987714a087.jpg",
+          "https://i.pinimg.com/564x/ea/69/79/ea69797b48f43b138afd8497cfa1e0e7.jpg",
       videoUrl: "https://youtu.be/b1Y7tiPaXuE"),
   VideoList(
       id: 4,
