@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_project/myaccount.dart';
 import 'package:mobile_project/notificationPage.dart';
 import 'package:mobile_project/searchPage.dart';
+import 'package:fluttericon/linearicons_free_icons.dart';
+import 'package:fluttericon/octicons_icons.dart';
 
 import 'bloc/teller/teller_bloc.dart';
 import 'bloc/video/video_bloc.dart';
@@ -27,20 +29,6 @@ class _HomePageState extends State<HomePage> {
     tellerBloc.add(FetchedTellerEvent());
 
     super.initState();
-  }
-
-  int _currentIndex = 0;
-  final List<Widget> screens = [
-    HomePage(),
-    SearchPage(),
-    NotificationPage(),
-    MyaccountPage()
-  ];
-
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
   }
 
   int _selectedIndex = 0;
@@ -85,7 +73,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             _buildCurrentPlaying(size),
-            _buildBottomBar(size)
+            _buildBottomBar(),
           ],
         ),
       ),
@@ -264,7 +252,7 @@ class _HomePageState extends State<HomePage> {
       //   Navigator.pushNamed(context, '/video');
       // },
       child: Container(
-        height: size.height * 0.103,
+        height: 70,
         padding: EdgeInsets.symmetric(horizontal: 40.0),
         decoration: BoxDecoration(
             color: kSecondaryColor,
@@ -321,7 +309,20 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildBottomBar(Size size) {
+  int activeTab = 0;
+  Widget _buildBottomBar() {
+    List items = [
+      LineariconsFree.home,
+      Octicons.search,
+      Icons.notifications_none,
+      Icons.person_outline
+    ];
+    List pages = [
+      HomePage(),
+      SearchPage(),
+      NotificationPage(),
+      MyaccountPage()
+    ];
     return Container(
       height: 65,
       color: kSecondaryColor,
@@ -332,50 +333,75 @@ class _HomePageState extends State<HomePage> {
               topRight: Radius.circular(50),
             ),
             color: kWhiteColor),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            FlatButton(
-                onPressed: () {
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => HomePage()));
-                },
-                child: Icon(
-                  Icons.home,
-                  color: kLightColor,
-                )),
-            FlatButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SearchPage()));
-                },
-                child: Icon(
-                  Icons.search,
-                  color: kLightColor,
-                )),
-            FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NotificationPage()));
-                },
-                child: Icon(
-                  Icons.notifications_active,
-                  color: kLightColor,
-                )),
-            FlatButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyaccountPage()));
-                },
-                child: Icon(
-                  Icons.person,
-                  color: kLightColor,
-                )),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(items.length, (index) {
+                return IconButton(
+                    icon: Icon(
+                      items[index],
+                      color: activeTab == index ? kPrimaryColor : kLightColor,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        activeTab = index;
+                      });
+                    });
+              })
+              //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   children: [
+              //   FlatButton(
+              //       onPressed: () {
+              //         // Navigator.push(context,
+              //         //     MaterialPageRoute(builder: (context) => HomePage()));
+              //       },
+              //       child: Icon(
+              //         Icons.home,
+              //         color: kLightColor,
+              //       )),
+              //   FlatButton(
+              //       onPressed: () {
+              //         Navigator.push(context,
+              //             MaterialPageRoute(builder: (context) => SearchPage()));
+              //       },
+              //       child: Icon(
+              //         Icons.search,
+              //         color: kLightColor,
+              //       )),
+              //   FlatButton(
+              //       onPressed: () {
+              //         Navigator.push(
+              //             context,
+              //             MaterialPageRoute(
+              //                 builder: (context) => NotificationPage()));
+              //       },
+              //       child: Icon(
+              //         Icons.notifications_active,
+              //         color: kLightColor,
+              //       )),
+              //   FlatButton(
+              //       onPressed: () {
+              //         Navigator.push(context,
+              //             MaterialPageRoute(builder: (context) => MyaccountPage()));
+              //       },
+              //       child: Icon(
+              //         Icons.person,
+              //         color: kLightColor,
+              //       )),
+              // ]
+
+              ),
         ),
       ),
+    );
+  }
+
+  Widget getBody() {
+    return IndexedStack(
+      index: activeTab,
+      children: [HomePage(), SearchPage(), NotificationPage(), MyaccountPage()],
     );
   }
 }
