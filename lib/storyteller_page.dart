@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_project/home_page.dart';
 import 'package:mobile_project/models/teller.dart';
 import 'package:mobile_project/tellerplaylist.dart';
 import 'bloc/teller/teller_bloc.dart';
 import 'constants.dart';
 import 'constants.dart';
-
-
 
 class StorytellerPage extends StatefulWidget {
   static String routesName = "/storytellerpage";
@@ -22,8 +21,8 @@ class _StorytellerState extends State<StorytellerPage> {
     tellerBloc..add(FetchedTellerEvent());
     super.initState();
   }
-  
-  Future handleRefresh(){
+
+  Future handleRefresh() {
     tellerBloc..add(FetchedTellerEvent());
     return null;
   }
@@ -34,12 +33,15 @@ class _StorytellerState extends State<StorytellerPage> {
       backgroundColor: kSecondaryColor,
       appBar: AppBar(
         backgroundColor: kSecondaryColor,
-        // leading: IconButton(
-        //   icon: Icon(Icons.chevron_left_rounded),
-        //   iconSize: 30.0,
-        //   color: Colors.white,
-        //   onPressed: () {},
-        // ),
+        leading: IconButton(
+          icon: Icon(Icons.chevron_left_rounded),
+          iconSize: 30.0,
+          color: Colors.white,
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => HomePage()));
+          },
+        ),
         title: Text(
           "Storyteller",
           style: TextStyle(
@@ -92,58 +94,56 @@ class _StorytellerState extends State<StorytellerPage> {
 
 Widget myDetailsContainer1({String stChannel, String stName}) {
   return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          child: Container(
-              child: Text(
-            stName,
-            style: TextStyle(
-                color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),
-          )),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          // child: Container(
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //       children: <Widget>[
-          //         Container(child: Text("4.3",
-          //           style: TextStyle(color: Colors.black54, fontSize: 18.0,),)),
-          //         Container(child: Icon(
-          //           Icons.star_rounded, color: Colors.white,
-          //           size: 15.0,),),
-          //         Container(child: Icon(
-          //           Icons.star_rounded, color: Colors.white,
-          //           size: 15.0,),),
-          //         Container(child: Icon(
-          //           Icons.star_rounded, color: Colors.white,
-          //           size: 15.0,),),
-          //         Container(child: Icon(
-          //           Icons.star_rounded, color: Colors.white,
-          //           size: 15.0,),),
-          //         Container(child: Icon(
-          //           Icons.star_half_rounded, color: Colors.white,
-          //           size: 15.0,),),
-          //         Container(child: Text("(321) \u00B7 0.9 mi",
-          //           style: TextStyle(color: Colors.black54, fontSize: 18.0,),)),
-          //       ],)),
-        ),
-        Container(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: <Widget>[
+      Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: Container(
             child: Text(
-          stChannel,
+          stName,
           style: TextStyle(
-              color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),
         )),
-        Container(
-          child: ButtonBar(
-            alignment: MainAxisAlignment.center,
-            children: <Widget>[
-              RaisedButton(
-                onPressed: () => {
-                  
-              },
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        // child: Container(
+        //     child: Row(
+        //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //       children: <Widget>[
+        //         Container(child: Text("4.3",
+        //           style: TextStyle(color: Colors.black54, fontSize: 18.0,),)),
+        //         Container(child: Icon(
+        //           Icons.star_rounded, color: Colors.white,
+        //           size: 15.0,),),
+        //         Container(child: Icon(
+        //           Icons.star_rounded, color: Colors.white,
+        //           size: 15.0,),),
+        //         Container(child: Icon(
+        //           Icons.star_rounded, color: Colors.white,
+        //           size: 15.0,),),
+        //         Container(child: Icon(
+        //           Icons.star_rounded, color: Colors.white,
+        //           size: 15.0,),),
+        //         Container(child: Icon(
+        //           Icons.star_half_rounded, color: Colors.white,
+        //           size: 15.0,),),
+        //         Container(child: Text("(321) \u00B7 0.9 mi",
+        //           style: TextStyle(color: Colors.black54, fontSize: 18.0,),)),
+        //       ],)),
+      ),
+      Container(
+          child: Text(
+        stChannel,
+        style: TextStyle(
+            color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),
+      )),
+      Container(
+        child: ButtonBar(
+          alignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+              onPressed: () => {},
               color: Colors.black54,
               child: Text(
                 '    Show More    ',
@@ -167,7 +167,7 @@ class TellerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(right: 25, left: 25, top: 20),
       child: Container(
         child: new FittedBox(
           child: Material(
