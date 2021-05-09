@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_project/bloc/video/video_bloc.dart';
 import 'package:mobile_project/login.dart';
+import 'package:mobile_project/searchPage.dart';
 import 'package:mobile_project/storyteller_page.dart';
 
 import 'bloc/teller/teller_bloc.dart';

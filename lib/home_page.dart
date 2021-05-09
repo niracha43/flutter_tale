@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           'Discover',
-          textAlign: TextAlign.start,
+          textAlign: TextAlign.left,
           style: Theme.of(context)
               .textTheme
               .headline4
@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
             quarterTurns: -1,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Recent'),
+              child: Text('All Video'),
             ),
           ),
         )
@@ -249,7 +249,7 @@ class _HomePageState extends State<HomePage> {
   Widget _buildCurrentPlaying(Size size) {
     return GestureDetector(
       // onTap: () {
-      //   Navigator.pushNamed(context, '/video');
+      //   Navigator.pushNamed(context, '/allvideo');
       // },
       child: Container(
         height: 70,
@@ -309,19 +309,20 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  int activeTab = 0;
+  void _onItemTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   Widget _buildBottomBar() {
+    int _selectedIndex = 0;
+
     List items = [
       LineariconsFree.home,
       Octicons.search,
       Icons.notifications_none,
       Icons.person_outline
-    ];
-    List pages = [
-      HomePage(),
-      SearchPage(),
-      NotificationPage(),
-      MyaccountPage()
     ];
     return Container(
       height: 65,
@@ -336,72 +337,75 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(items.length, (index) {
-                return IconButton(
-                    icon: Icon(
-                      items[index],
-                      color: activeTab == index ? kPrimaryColor : kLightColor,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        activeTab = index;
-                      });
-                    });
-              })
-              //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   children: [
-              //   FlatButton(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // children: List.generate(items.length, (index) {
+              //   return IconButton(
+              //       icon: Icon(
+              //         items[index],
+              //         color: activeTab == index ? kPrimaryColor : kLightColor,
+              //       ),
               //       onPressed: () {
-              //         // Navigator.push(context,
-              //         //     MaterialPageRoute(builder: (context) => HomePage()));
-              //       },
-              //       child: Icon(
-              //         Icons.home,
-              //         color: kLightColor,
-              //       )),
-              //   FlatButton(
-              //       onPressed: () {
-              //         Navigator.push(context,
-              //             MaterialPageRoute(builder: (context) => SearchPage()));
-              //       },
-              //       child: Icon(
-              //         Icons.search,
-              //         color: kLightColor,
-              //       )),
-              //   FlatButton(
-              //       onPressed: () {
-              //         Navigator.push(
-              //             context,
-              //             MaterialPageRoute(
-              //                 builder: (context) => NotificationPage()));
-              //       },
-              //       child: Icon(
-              //         Icons.notifications_active,
-              //         color: kLightColor,
-              //       )),
-              //   FlatButton(
-              //       onPressed: () {
-              //         Navigator.push(context,
-              //             MaterialPageRoute(builder: (context) => MyaccountPage()));
-              //       },
-              //       child: Icon(
-              //         Icons.person,
-              //         color: kLightColor,
-              //       )),
-              // ]
+              //         setState(() {
+              //           activeTab = index;
+              //         });
+              //       });
+              // })
 
-              ),
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                FlatButton(
+                    onPressed: () {
+                      // Navigator.push(context,
+                      //     MaterialPageRoute(builder: (context) => HomePage()));
+                    },
+                    child: Icon(
+                      Octicons.home,
+                      color: kPrimaryColor,
+                    )),
+                FlatButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearchPage()));
+                    },
+                    child: Icon(
+                      Octicons.search,
+                      color: kPrimaryColor,
+                    )),
+                FlatButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NotificationPage()));
+                    },
+                    child: Icon(
+                      Icons.notifications_none,
+                      color: kPrimaryColor,
+                    )),
+                FlatButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyaccountPage()));
+                    },
+                    child: Icon(
+                      Icons.content_copy_rounded,
+                      color: kPrimaryColor,
+                    )),
+              ]),
         ),
       ),
     );
   }
 
-  Widget getBody() {
-    return IndexedStack(
-      index: activeTab,
-      children: [HomePage(), SearchPage(), NotificationPage(), MyaccountPage()],
-    );
-  }
+  // Widget getBody() {
+  //   return IndexedStack(
+  //     index: activeTab,
+  //     children: [HomePage(), SearchPage(), NotificationPage(), MyaccountPage()],
+  //   );
+  //}
 }

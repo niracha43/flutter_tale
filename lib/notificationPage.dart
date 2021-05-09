@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
+import 'home_page.dart';
 
 class NotificationPage extends StatelessWidget {
   @override
@@ -9,6 +10,15 @@ class NotificationPage extends StatelessWidget {
       backgroundColor: kSecondaryColor,
       appBar: AppBar(
         backgroundColor: kSecondaryColor,
+        leading: IconButton(
+          icon: Icon(Icons.chevron_left_rounded),
+          iconSize: 30.0,
+          color: Colors.white,
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => HomePage()));
+          },
+        ),
         title: Text(
           "Notification",
           style: TextStyle(

@@ -51,17 +51,17 @@ class _StorytellerState extends State<StorytellerPage> {
           ),
         ),
         elevation: 0.0,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.more_horiz),
-            iconSize: 30.0,
-            color: Colors.white,
-            onPressed: () {},
-          ),
-        ],
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(Icons.more_horiz),
+        //     iconSize: 30.0,
+        //     color: Colors.white,
+        //     onPressed: () {},
+        //   ),
+        // ],
       ),
       body: Container(
-          padding: EdgeInsets.only(top: 40),
+          padding: EdgeInsets.only(top: 2),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -172,7 +172,7 @@ class TellerCard extends StatelessWidget {
         child: new FittedBox(
           child: Material(
               color: telleritem?.stColor ?? kPrimaryColor,
-              elevation: 14.0,
+              elevation: 5.0,
               borderRadius: BorderRadius.circular(24.0),
               shadowColor: Color(0x802196F3),
               child: Row(
