@@ -7,7 +7,7 @@ class Password_model extends FormzInput<String, PasswordValidationError> {
   const Password_model.dirty([String value = '']) : super.dirty(value);
 
   @override
-  PasswordValidationError validator(String value) {
-    return value?.isNotEmpty == true ? null : PasswordValidationError.empty;
+  PasswordValidationError? validator(String value) {
+    return value.isNotEmpty == true ? null : PasswordValidationError.empty;
   }
 }

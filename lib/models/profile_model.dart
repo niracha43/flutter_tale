@@ -19,11 +19,11 @@ class Profile {
     this.phone,
   });
 
-  int id;
-  String firstname;
-  String lastname;
-  String email;
-  String phone;
+  int? id;
+  String? firstname;
+  String? lastname;
+  String? email;
+  String? phone;
 
   factory Profile.fromMap(Map<String, dynamic> json) => Profile(
         id: json["id"],

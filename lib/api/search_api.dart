@@ -13,8 +13,8 @@ class SearchApi {
       final List allvideo = json.decode(response.body);
 
       return allvideo.map((json) => Allvideo.fromJson(json)).where((allvideo) {
-        final videoNameLower = allvideo.videoName.toLowerCase();
-        final videoChannelLower = allvideo.videoChannel.toLowerCase();
+        final videoNameLower = allvideo.videoName!.toLowerCase();
+        final videoChannelLower = allvideo.videoChannel!.toLowerCase();
         final searchLower = query.toLowerCase();
 
         return videoNameLower.contains(searchLower) ||

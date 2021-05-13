@@ -20,11 +20,11 @@ class Storyteller  extends Equatable{
         this.stColor,
     });
 
-    int id;
-    String stName;
-    String stChannel;
-    String imageUrl;
-    Color stColor;
+    int? id;
+    String? stName;
+    String? stChannel;
+    String? imageUrl;
+    Color? stColor;
 
     factory Storyteller.fromJson(Map<String, dynamic> json) => Storyteller(
         id: json["id"] == null ? null : json["id"],

@@ -12,9 +12,9 @@ class AuthenState extends Equatable {
   final Password_model password;
 
   AuthenState copyWith({
-    FormzStatus status,
-    Username_model username,
-    Password_model password,
+    FormzStatus? status,
+    Username_model? username,
+    Password_model? password,
   }) {
     return AuthenState(
       status: status ?? this.status,

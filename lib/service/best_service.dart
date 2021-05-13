@@ -2,13 +2,13 @@ import 'package:mobile_project/bloc/authen/authen_bloc.dart';
 import 'package:dio/dio.dart';
 
 class BaseService {
-  String _baseUrl;
-  AuthenBloc _authenBloc;
-  String _token;
+  late String _baseUrl;
+  AuthenBloc? _authenBloc;
+  String? _token;
   final Dio _client = Dio();
   final Dio _clientSecondary = Dio();
 
-  void initial({AuthenBloc authenBloc}) {
+  void initial({AuthenBloc? authenBloc}) {
     _baseUrl =
         'http://selab.mfu.ac.th:9001/download?bucket=mobdev62&filename=6231305014'; // TODO: Get url from config
     _authenBloc = authenBloc;
@@ -19,7 +19,7 @@ class BaseService {
 
   void setupClient(
     Dio client, {
-    String baseUrl,
+    required String baseUrl,
     int connectTimeout = 60000,
     int receiveTimeout = 60000,
     int sendTimeout = 30000,
@@ -30,7 +30,7 @@ class BaseService {
     client.options.sendTimeout = sendTimeout;
   }
 
-  Future<Response<T>> get<T>(String url, {String auth}) {
+  Future<Response<T>> get<T>(String url, {String? auth}) {
     Options options = Options(
         contentType: Headers.jsonContentType,
         headers: {'Authorization': 'Bearer $auth'});
@@ -80,7 +80,7 @@ class BaseService {
   }
 
   dynamic onError(DioError e) async {
-    int code = e.response?.statusCode;
+    int? code = e.response?.statusCode;
     return code;
   }
 }

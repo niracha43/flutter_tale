@@ -5,7 +5,7 @@ import 'package:mobile_project/service/best_service.dart';
 
 class AuthService extends BaseService {
   final endpoint = "/auth";
-  static AuthService _service;
+  static AuthService? _service;
 
   //final GoogleSignIn _googleSignIn = GoogleSignIn();
   // final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -15,10 +15,10 @@ class AuthService extends BaseService {
     if (_service == null) {
       _service = AuthService.Init();
     }
-    return _service;
+    return _service!;
   }
 
-  void initialize({AuthenBloc authenBloc}) {
+  void initialize({AuthenBloc? authenBloc}) {
     super.initial(authenBloc: authenBloc);
   }
 

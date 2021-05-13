@@ -6,19 +6,19 @@ import 'bloc/video/video_bloc.dart';
 import 'constants.dart';
 
 class TellerPlayList extends StatefulWidget {
-  static String routesName;
+  static String? routesName;
 
   @override
   _TellerPlayListState createState() => _TellerPlayListState();
 }
 
 class _TellerPlayListState extends State<TellerPlayList> {
-  VideoBloc videoBloc;
-  TellerBloc tellerBloc;
+  VideoBloc? videoBloc;
+  late TellerBloc tellerBloc;
   @override
   void initState() {
     videoBloc = BlocProvider.of<VideoBloc>(context);
-    videoBloc.add(FetchedEvent());
+    videoBloc!.add(FetchedEvent());
     tellerBloc = BlocProvider.of<TellerBloc>(context);
     tellerBloc.add(FetchedTellerEvent());
   }
@@ -95,9 +95,9 @@ class _TellerPlayListState extends State<TellerPlayList> {
                         return ListView.builder(
                           itemCount: state.videoList.length,
                           itemBuilder: (context, index) => _buildSonglistItem(
-                            image: state.videoList[index].imageUrl,
-                            title: state.videoList[index].videoName,
-                            subtitle: state.videoList[index].videoChannel,
+                            image: state.videoList[index].imageUrl!,
+                            title: state.videoList[index].videoName!,
+                            subtitle: state.videoList[index].videoChannel!,
                           ),
                         );
                       },
@@ -113,7 +113,7 @@ class _TellerPlayListState extends State<TellerPlayList> {
   }
 }
 
-Widget _buildSonglistItem({String image, String title, String subtitle}) {
+Widget _buildSonglistItem({required String image, required String title, required String subtitle}) {
   return ListTile(
     title: Text(title),
     subtitle: Text(subtitle),

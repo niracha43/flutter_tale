@@ -18,12 +18,12 @@ class VideoList {
         this.videoUrl,
     });
 
-    int id;
-    String videoName;
-    String videoChannel;
-    DateTime date;
-    String imageUrl;
-    String videoUrl;
+    int? id;
+    String? videoName;
+    String? videoChannel;
+    DateTime? date;
+    String? imageUrl;
+    String? videoUrl;
 
     factory VideoList.fromJson(Map<String, dynamic> json) => VideoList(
         id: json["id"] == null ? null : json["id"],
@@ -38,7 +38,7 @@ class VideoList {
         "id": id == null ? null : id,
         "videoName": videoName == null ? null : videoName,
         "videoChannel": videoChannel == null ? null : videoChannel,
-        "date": date == null ? null : date.toIso8601String(),
+        "date": date == null ? null : date!.toIso8601String(),
         "imageUrl": imageUrl == null ? null : imageUrl,
         "videoUrl": videoUrl == null ? null : videoUrl,
     };

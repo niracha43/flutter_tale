@@ -95,12 +95,12 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget buildAllVideo(Allvideo allvideo) => ListTile(
         leading: Image.network(
-          allvideo.imageUrl,
+          allvideo.imageUrl!,
           fit: BoxFit.cover,
           width: 50,
           height: 50,
         ),
-        title: Text(allvideo.videoName),
-        subtitle: Text(allvideo.videoChannel),
+        title: Text(allvideo.videoName!),
+        subtitle: Text(allvideo.videoChannel!),
       );
 }

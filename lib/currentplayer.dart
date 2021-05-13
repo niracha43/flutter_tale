@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'home_page.dart';
 
-class NotificationPage extends StatelessWidget {
+class CurrentPlayerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +20,7 @@ class NotificationPage extends StatelessWidget {
           },
         ),
         title: Text(
-          "Notification",
+          "Now Playing",
           style: TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,

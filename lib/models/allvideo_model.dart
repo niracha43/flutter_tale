@@ -20,12 +20,12 @@ class Allvideo {
     this.videoUrl,
   });
 
-  int id;
-  String videoName;
-  String videoChannel;
-  String date;
-  String imageUrl;
-  String videoUrl;
+  int? id;
+  String? videoName;
+  String? videoChannel;
+  String? date;
+  String? imageUrl;
+  String? videoUrl;
 
   factory Allvideo.fromJson(Map<String, dynamic> json) => Allvideo(
         id: json["id"],
@@ -62,11 +62,11 @@ final videoChannelValues = EnumValues({
 
 class EnumValues<T> {
   Map<String, T> map;
-  Map<T, String> reverseMap;
+  Map<T, String>? reverseMap;
 
   EnumValues(this.map);
 
-  Map<T, String> get reverse {
+  Map<T, String>? get reverse {
     if (reverseMap == null) {
       reverseMap = map.map((k, v) => new MapEntry(v, k));
     }

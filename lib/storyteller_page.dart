@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meta/meta.dart';
 import 'package:mobile_project/home_page.dart';
 import 'package:mobile_project/models/teller.dart';
 import 'package:mobile_project/tellerplaylist.dart';
@@ -14,7 +15,7 @@ class StorytellerPage extends StatefulWidget {
 }
 
 class _StorytellerState extends State<StorytellerPage> {
-  TellerBloc tellerBloc;
+  late TellerBloc tellerBloc;
   @override
   void initState() {
     tellerBloc = BlocProvider.of<TellerBloc>(context);
@@ -22,7 +23,7 @@ class _StorytellerState extends State<StorytellerPage> {
     super.initState();
   }
 
-  Future handleRefresh() {
+  Future? handleRefresh() {
     tellerBloc..add(FetchedTellerEvent());
     return null;
   }
@@ -35,7 +36,7 @@ class _StorytellerState extends State<StorytellerPage> {
         backgroundColor: kSecondaryColor,
         leading: IconButton(
           icon: Icon(Icons.chevron_left_rounded),
-          iconSize: 30.0,
+          iconSize: 40.0,
           color: Colors.white,
           onPressed: () {
             Navigator.push(
@@ -72,8 +73,10 @@ class _StorytellerState extends State<StorytellerPage> {
           alignment: Alignment.center,
           child: BlocBuilder<TellerBloc, TellerState>(
             builder: (context, state) {
-              return RefreshIndicator(
-                onRefresh: handleRefresh,
+              var refreshIndicator = RefreshIndicator(
+                onRefresh: () async {
+                  handleRefresh;
+                },
                 child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   itemCount: state.storyteller.length,
@@ -86,13 +89,14 @@ class _StorytellerState extends State<StorytellerPage> {
                   },
                 ),
               );
+              return refreshIndicator;
             },
           )),
     );
   }
 }
 
-Widget myDetailsContainer1({String stChannel, String stName}) {
+Widget myDetailsContainer1({String? stChannel, String? stName}) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: <Widget>[
@@ -100,7 +104,7 @@ Widget myDetailsContainer1({String stChannel, String stName}) {
         padding: const EdgeInsets.only(left: 8.0),
         child: Container(
             child: Text(
-          stName,
+          stName!,
           style: TextStyle(
               color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),
         )),
@@ -134,7 +138,7 @@ Widget myDetailsContainer1({String stChannel, String stName}) {
       ),
       Container(
           child: Text(
-        stChannel,
+        stChannel!,
         style: TextStyle(
             color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),
       )),
@@ -163,7 +167,8 @@ Widget myDetailsContainer1({String stChannel, String stName}) {
 class TellerCard extends StatelessWidget {
   final Storyteller telleritem;
 
-  const TellerCard({Key key, this.telleritem}) : super(key: key);
+  const TellerCard({Key? key, required this.telleritem}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -171,7 +176,7 @@ class TellerCard extends StatelessWidget {
       child: Container(
         child: new FittedBox(
           child: Material(
-              color: telleritem?.stColor ?? kPrimaryColor,
+              color: telleritem.stColor ?? kPrimaryColor,
               elevation: 5.0,
               borderRadius: BorderRadius.circular(24.0),
               shadowColor: Color(0x802196F3),
@@ -182,7 +187,7 @@ class TellerCard extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 16.0),
                       child: myDetailsContainer1(
-                          stName: telleritem?.stName,
+                          stName: telleritem.stName,
                           stChannel: telleritem.stChannel),
                     ),
                   ),
@@ -192,7 +197,7 @@ class TellerCard extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: new BorderRadius.circular(24.0),
                       child: Image.network(
-                        telleritem?.imageUrl,
+                        telleritem.imageUrl!,
                         fit: BoxFit.contain,
                       ),
                     ),

@@ -15,9 +15,9 @@ class TellerState extends Equatable {
     });
 
   TellerState coppyWith({
-    ProjectFetchedStatus status,
-    List<Storyteller> storyteller,
-    Situation situation,
+    ProjectFetchedStatus? status,
+    List<Storyteller>? storyteller,
+    Situation? situation,
   }) {
     return TellerState(
       status: status ?? this.status,

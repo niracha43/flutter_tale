@@ -9,8 +9,6 @@ import 'package:fluttericon/octicons_icons.dart';
 import 'bloc/teller/teller_bloc.dart';
 import 'bloc/video/video_bloc.dart';
 import 'constants.dart';
-import 'models/tellerList.dart';
-import 'models/videoList.dart';
 import 'storyteller_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,8 +17,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  VideoBloc videoBloc;
-  TellerBloc tellerBloc;
+  late VideoBloc videoBloc;
+  late TellerBloc tellerBloc;
   @override
   void initState() {
     videoBloc = BlocProvider.of<VideoBloc>(context);
@@ -40,24 +38,25 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           'Discover',
-          textAlign: TextAlign.left,
+          // textAlign: TextAlign.start,
           style: Theme.of(context)
               .textTheme
-              .headline4
+              .headline4!
               .copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
         ),
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.transparent,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Icon(
-              Icons.lock,
-              color: kPrimaryColor,
-              size: 30,
-            ),
-          )
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.all(12.0),
+        //     child: Icon(
+        //       Icons.lock,
+        //       color: kPrimaryColor,
+        //       size: 30,
+        //     ),
+        //   )
+        // ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -130,7 +129,7 @@ class _HomePageState extends State<HomePage> {
             quarterTurns: -1,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Popular'),
+              child: Text('Popular                      '),
             ),
           ),
         ),
@@ -148,24 +147,23 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildPlaylistAndSongs(Size size, VideoBloc videoBloc) {
+  Widget _buildPlaylistAndSongs(Size size, VideoBloc? videoBloc) {
     return Column(
       children: [
         Container(
           height: 0.35 * size.height,
           width: size.width * 0.8,
           // color: Colors.purple,
-          child: BlocBuilder<TellerBloc, TellerState>(
-            builder: (context, state) {
-              return ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: state.storyteller.length,
-                itemBuilder: (context, index) => _buildPlaylistItem(
-                    image: state.storyteller[index].imageUrl,
-                    title: state.storyteller[index].stName),
-              );
-            },
-          ),
+          child:
+              BlocBuilder<TellerBloc, TellerState>(builder: (context, state) {
+            return ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: state.storyteller.length,
+              itemBuilder: (context, index) => _buildPlaylistItem(
+                  image: state.storyteller[index].imageUrl!,
+                  title: state.storyteller[index].stName!),
+            );
+          }),
         ),
         Container(
           height: 0.35 * size.height,
@@ -178,9 +176,9 @@ class _HomePageState extends State<HomePage> {
               return ListView.builder(
                 itemCount: state.videoList.length,
                 itemBuilder: (context, index) => _buildSonglistItem(
-                  image: state.videoList[index].imageUrl,
-                  title: state.videoList[index].videoName,
-                  subtitle: state.videoList[index].videoChannel,
+                  image: state.videoList[index].imageUrl!,
+                  title: state.videoList[index].videoName!,
+                  subtitle: state.videoList[index].videoChannel!,
                 ),
               );
             },
@@ -190,7 +188,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildPlaylistItem({String title, String image}) {
+  Widget _buildPlaylistItem({required String title, required String image}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
       width: 220,
@@ -231,7 +229,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildSonglistItem({String image, String title, String subtitle}) {
+  Widget _buildSonglistItem(
+      {required String image,
+      required String title,
+      required String subtitle}) {
     return ListTile(
       title: Text(title),
       subtitle: Text(subtitle),
@@ -356,8 +357,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 FlatButton(
                     onPressed: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (context) => HomePage()));
+                      // Navigator.pop(context);
                     },
                     child: Icon(
                       Octicons.home,
@@ -390,7 +390,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MyaccountPage()));
+                              builder: (context) => StorytellerPage()));
                     },
                     child: Icon(
                       Icons.content_copy_rounded,

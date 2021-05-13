@@ -20,12 +20,12 @@ class Popular {
     this.videoUrl,
   });
 
-  int id;
-  String videoName;
-  String videoChannel;
-  String date;
-  String imageUrl;
-  String videoUrl;
+  int? id;
+  String? videoName;
+  String? videoChannel;
+  String? date;
+  String? imageUrl;
+  String? videoUrl;
 
   factory Popular.fromJson(Map<String, dynamic> json) => Popular(
         id: json["id"],
