@@ -6,24 +6,21 @@ List<Storyteller> tellerLists = [
     id: 1,
     stName: 'Koosloos',
     stChannel: 'Koosloos_Ulias Channel',
-    imageUrl:
-        "https://i.pinimg.com/564x/65/04/20/650420091a3844e70ecb95af8a0106ba.jpg",
+    imageUrl: "https://www.picz.in.th/image/Phlyxl",
     stColor: yellowColor,
   ),
   Storyteller(
     id: 2,
     stName: 'Peace',
     stChannel: 'Koosloos_Ulias Channel',
-    imageUrl:
-        "https://i.pinimg.com/564x/4e/b0/d4/4eb0d45d5f569b1c032c99b1fbe284ed.jpg",
+    imageUrl: "assets/images/89764.jpg",
     stColor: favoriteColor,
   ),
   Storyteller(
     id: 3,
     stName: 'Flutter Time',
     stChannel: 'Koosloos_Ulias Channel',
-    imageUrl:
-        "https://i.pinimg.com/564x/20/32/e5/2032e5ed7788622b4759ed803a38bc8c.jpg",
+    imageUrl: "assets/images/89781.jpg",
     stColor: allColor,
   ),
   Storyteller(
@@ -31,7 +28,23 @@ List<Storyteller> tellerLists = [
     stName: 'Romance',
     stChannel: 'Koosloos_Ulias Channel',
     imageUrl:
-        "https://i.pinimg.com/564x/0a/bc/0b/0abc0bd034360fe905ebbdcb307a1868.jpg",
+        "assets/images/13233011_1754935194728076_3593842600656914117_n.jpeg",
+    stColor: kPrimaryColor,
+  ),
+  Storyteller(
+    id: 5,
+    stName: 'Romance',
+    stChannel: 'Koosloos_Ulias Channel',
+    imageUrl:
+        "https://i.pinimg.com/564x/65/5f/4f/655f4ff107dcf3a869a7228d6ebb9eec.jpg",
+    stColor: kPrimaryColor,
+  ),
+  Storyteller(
+    id: 6,
+    stName: 'Romance',
+    stChannel: 'Koosloos_Ulias Channel',
+    imageUrl:
+        "https://i.pinimg.com/564x/78/89/6f/78896f80d2a9a33c6238df200d582f5a.jpg",
     stColor: kPrimaryColor,
   ),
 ];
