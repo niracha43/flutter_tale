@@ -1,7 +1,7 @@
 [
     {
         "id" : 1,
-        "videoName:" : "faus tub ntsuag leej txiv ntawm tog tsev",
+        "videoName" : "faus tub ntsuag leej txiv ntawm tog tsev",
         "videoChannel" : "Dab hais hmoob",
         "date" : "06/05/2021",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/Dab%20hais%20hmoob/Screen%20Shot%202564-05-06%20at%2008.59.58.png?raw=true",
@@ -9,7 +9,7 @@
       },
       {
         "id" : 2,
-        "videoName:" : "txiav poj niam tw tsov poj niam rov los tos",
+        "videoName" : "txiav poj niam tw tsov poj niam rov los tos",
         "videoChannel" : "Dab hais hmoob",
         "date" : "30/04/2021",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/Dab%20hais%20hmoob/Screen%20Shot%202564-05-06%20at%2009.24.12.png?raw=true",
@@ -17,7 +17,7 @@
       },
       {
         "id" : 3,
-        "videoName:" : "tua poj ntxoog caij tsov los tos neeg",
+        "videoName" : "tua poj ntxoog caij tsov los tos neeg",
         "videoChannel" : "Dab hais hmoob",
         "date" : "10/04/2021",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/Dab%20hais%20hmoob/Screen%20Shot%202564-05-13%20at%2021.10.30.png?raw=true",
@@ -25,7 +25,7 @@
       },
       {
         "id" : 4,
-        "videoName:" : "poj ntxoog ntov ntshav rau txhua leej txhua tus",
+        "videoName" : "poj ntxoog ntov ntshav rau txhua leej txhua tus",
         "videoChannel" : "Dab hais hmoob",
         "date" : "05/04/2021",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/Dab%20hais%20hmoob/Screen%20Shot%202564-05-06%20at%2009.31.23.png?raw=true",
@@ -33,7 +33,7 @@
       },
       {
         "id" : 5,
-        "videoName:" : "dab tuag tau kev pog vws coj los tsev",
+        "videoName" : "dab tuag tau kev pog vws coj los tsev",
         "videoChannel" : "Dab hais hmoob",
         "date" : "04/04/2021",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/Dab%20hais%20hmoob/Screen%20Shot%202564-05-06%20at%2009.33.16.png?raw=true",
@@ -41,7 +41,7 @@
       },
       {
         "id" : 6,
-        "videoName:" : "poj ntxoog los khi nyab pov hauv tsev",
+        "videoName" : "poj ntxoog los khi nyab pov hauv tsev",
         "videoChannel" : "Dab hais hmoob",
         "date" : "01/04/2021",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/Dab%20hais%20hmoob/Screen%20Shot%202564-05-06%20at%2009.35.08.png?raw=true",
@@ -49,7 +49,7 @@
       },
       {
         "id" : 7,
-        "videoName:" : "Ntes tau ntses dab los noj",
+        "videoName" : "Ntes tau ntses dab los noj",
         "videoChannel" : "Dab hais hmoob",
         "date" : "21/03/2021",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/Dab%20hais%20hmoob/Screen%20Shot%202564-05-06%20at%2009.36.33.png?raw=true",
@@ -57,7 +57,7 @@
       },
       {
         "id" : 8,
-        "videoName:" : "2 niam txiv tua dab caum noj neeg",
+        "videoName" : "2 niam txiv tua dab caum noj neeg",
         "videoChannel" : "Dab hais hmoob",
         "date" : "18/02/2021",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/Dab%20hais%20hmoob/Screen%20Shot%202564-05-06%20at%2009.40.57.png?raw=true",
@@ -65,7 +65,7 @@
       },
       {
         "id" : 9,
-        "videoName:" : "Muab tiag qab nees thiaj tsim nyog",
+        "videoName" : "Muab tiag qab nees thiaj tsim nyog",
         "videoChannel" : "Dab hais hmoob",
         "date" : "20/03/2021",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/Dab%20hais%20hmoob/Screen%20Shot%202564-05-06%20at%2009.43.58.png?raw=true",
@@ -73,7 +73,7 @@
       },
       {
         "id" : 10,
-        "videoName:" : "Tsev kub nyhiab thiaj ciaj dab",
+        "videoName" : "Tsev kub nyhiab thiaj ciaj dab",
         "videoChannel" : "Dab hais hmoob",
         "date" : "29/03/2021",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/Dab%20hais%20hmoob/Screen%20Shot%202564-05-06%20at%2009.45.15.png?raw=true",
