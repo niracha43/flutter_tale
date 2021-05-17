@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
-import 'package:mobile_project/bloc/authen/authen_bloc.dart';
 import 'package:dio/dio.dart';
 
 class BaseService {
   String _baseUrl;
-  String _token;
   final Dio _client = Dio();
   final Dio _clientSecondary = Dio();
 
   void initial() {
-    _baseUrl = 'http://noy.chaiiya.info/vdo';
+    _baseUrl = 'http://noy.chaiiya.info/json';
     // _baseUrl = FlutterConfig.get(Constants.key_endpoint_service);
     setupClient(_client, baseUrl: _baseUrl);
     setupClient(_clientSecondary, baseUrl: _baseUrl);

@@ -142,10 +142,10 @@ Widget _buildSonglistItem(
     @required String title,
     @required String subtitle}) {
   return ListTile(
-    title: Text(title),
-    subtitle: Text(subtitle),
+    title: Text(title ?? ''),
+    subtitle: Text(subtitle ?? ''),
     leading: Container(
-      child: Image.network(image),
+      child: image != null  ? Image.network(image) : null,
       height: 50,
       width: 50,
       decoration: BoxDecoration(
