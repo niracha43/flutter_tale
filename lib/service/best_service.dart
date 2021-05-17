@@ -9,7 +9,7 @@ class BaseService {
   final Dio _clientSecondary = Dio();
 
   void initial() {
-    _baseUrl = 'http://178.128.212.237/json';
+    _baseUrl = 'http://noy.chaiiya.info/vdo';
     // _baseUrl = FlutterConfig.get(Constants.key_endpoint_service);
     setupClient(_client, baseUrl: _baseUrl);
     setupClient(_clientSecondary, baseUrl: _baseUrl);
