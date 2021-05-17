@@ -1,8 +1,10 @@
 import 'package:mobile_project/bloc/authen/authen_bloc.dart';
 import 'package:mobile_project/service/auth_service.dart';
+import 'package:mobile_project/service/storyteller_bord.dart';
 
 class Service {
   AuthService _authService;
+  TellerService _tellerService;
   static Service _instance;
   Service._init();
 
@@ -13,8 +15,8 @@ class Service {
     return _instance;
   }
 
-  void initialize({AuthenBloc authenBloc}) {
-    _instance._authService = AuthService()..initialize(authenBloc: authenBloc);
-    // _instance._meService = MeService()..initial(authenBloc: authenBloc);
+  void initialize() {
+    _instance._authService = AuthService()..initialize();
+    _instance._tellerService = TellerService()..initial();
   }
 }

@@ -15,7 +15,7 @@ class StorytellerPage extends StatefulWidget {
 }
 
 class _StorytellerState extends State<StorytellerPage> {
-   TellerBloc tellerBloc;
+  TellerBloc tellerBloc;
 
   @override
   void initState() {
@@ -106,71 +106,67 @@ class _StorytellerState extends State<StorytellerPage> {
                 scrollDirection: Axis.vertical,
                 itemCount: tellerLists.length,
                 itemBuilder: (context, index) {
-                  return Hero(
-                    tag: "storytelleritem",
-                    child: FittedBox(
-                      child: Material(
-                        child: Card(
-                          color:
-                              state.storyteller[index].stColor ?? kPrimaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          elevation: 5,
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: [
-                                  TellerCard(state.storyteller[index]),
-                                  Container(
-                                    width: 120,
-                                    height: 40,
-                                    child: ButtonBar(
-                                      alignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        RaisedButton(
-                                          onPressed: () => {
-                                            Navigator.of(context)
-                                                .push(MaterialPageRoute(
-                                              builder: (BuildContext context) =>
-                                                  TellerPlayList(
-                                                      pathlist: state
-                                                          .storyteller[index]
-                                                          .pathPlaylist),
-                                            )),
-                                          },
-                                          color: Colors.white,
-                                          child: Text(
-                                            'Show More',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 10),
-                                          ),
-                                          shape: new RoundedRectangleBorder(
-                                            borderRadius:
-                                                new BorderRadius.circular(30.0),
-                                          ),
+                  return FittedBox(
+                    child: Material(
+                      child: Card(
+                        color:
+                            state.storyteller[index].stColor ?? kPrimaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        elevation: 5,
+                        child: Row(
+                          children: <Widget>[
+                            Column(
+                              children: [
+                                TellerCard(state.storyteller[index]),
+                                Container(
+                                  width: 120,
+                                  height: 40,
+                                  child: ButtonBar(
+                                    alignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      RaisedButton(
+                                        onPressed: () => {
+                                          Navigator.of(context)
+                                              .push(MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                TellerPlayList(
+                                                    storyteller: state
+                                                        .storyteller[index]),
+                                          )),
+                                        },
+                                        color: Colors.white,
+                                        child: Text(
+                                          'Show More',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 10),
                                         ),
-                                      ],
-                                    ),
+                                        shape: new RoundedRectangleBorder(
+                                          borderRadius:
+                                              new BorderRadius.circular(30.0),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                              Container(
-                                width: 90,
-                                height: 100,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  child: Image.network(
-                                      state.storyteller[index].imageUrl,
-                                      fit: BoxFit.cover,
-                                      height: double.infinity,
-                                      width: double.infinity,
-                                      alignment: Alignment.topRight),
                                 ),
+                              ],
+                            ),
+                            Container(
+                              width: 90,
+                              height: 100,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15.0),
+                                child: Image.network(
+                                    state.storyteller[index].imageUrl,
+                                    fit: BoxFit.cover,
+                                    height: double.infinity,
+                                    width: double.infinity,
+                                    alignment: Alignment.topRight),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

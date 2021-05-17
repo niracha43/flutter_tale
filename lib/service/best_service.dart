@@ -3,15 +3,13 @@ import 'package:mobile_project/bloc/authen/authen_bloc.dart';
 import 'package:dio/dio.dart';
 
 class BaseService {
-   String _baseUrl;
-  AuthenBloc _authenBloc;
+  String _baseUrl;
   String _token;
   final Dio _client = Dio();
   final Dio _clientSecondary = Dio();
 
-  void initial({AuthenBloc authenBloc}) {
-    _baseUrl = 'http://178.128.212.237/json'; // TODO: Get url from config
-    _authenBloc = authenBloc;
+  void initial() {
+    _baseUrl = 'http://178.128.212.237/json';
     // _baseUrl = FlutterConfig.get(Constants.key_endpoint_service);
     setupClient(_client, baseUrl: _baseUrl);
     setupClient(_clientSecondary, baseUrl: _baseUrl);
@@ -19,7 +17,7 @@ class BaseService {
 
   void setupClient(
     Dio client, {
-      @required String baseUrl,
+    @required String baseUrl,
     int connectTimeout = 60000,
     int receiveTimeout = 60000,
     int sendTimeout = 30000,
@@ -30,10 +28,8 @@ class BaseService {
     client.options.sendTimeout = sendTimeout;
   }
 
-  Future<Response<T>> get<T>(String url, {String auth}) {
-    Options options = Options(
-        contentType: Headers.jsonContentType,
-        headers: {'Authorization': 'Bearer $auth'});
+  Future<Response<T>> get<T>(String url) {
+    Options options = Options(contentType: Headers.jsonContentType);
     return _client.get<T>(url, options: options);
   }
 
@@ -64,9 +60,9 @@ class BaseService {
   }
 
   dynamic onRequest(RequestOptions options) {
-    if (_token != null) {
-      options.headers['Authorization'] = 'Bearer ${_token}';
-    }
+    // if (_token != null) {
+    //   options.headers['Authorization'] = 'Bearer ${_token}';
+    // }
 
     print(
         '''[${runtimeType.toString()}] Request => [${options.method}] ${options.uri}

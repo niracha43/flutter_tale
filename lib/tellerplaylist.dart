@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_project/models/teller.dart';
 import 'package:mobile_project/storyteller_page.dart';
 
 import 'bloc/teller/teller_bloc.dart';
@@ -8,9 +9,10 @@ import 'constants.dart';
 
 class TellerPlayList extends StatefulWidget {
   static String routesName;
-  final String pathlist;
+  final Storyteller storyteller;
 
-  const TellerPlayList({Key key, @required this.pathlist}) : super(key: key);
+  const TellerPlayList({Key key, this.storyteller}) : super(key: key);
+
   // final Allvideo allvideo;
 
   // const TellerPlayList({Key? key, required this.allvideo}) : super(key: key);
@@ -25,19 +27,19 @@ class _TellerPlayListState extends State<TellerPlayList> {
   @override
   void initState() {
     videoBloc = BlocProvider.of<VideoBloc>(context);
-    videoBloc.add(FetchedEvent());
-    tellerBloc = BlocProvider.of<TellerBloc>(context);
-    tellerBloc.add(FetchedTellerEvent());
-    print(widget.pathlist);
+    videoBloc.add(FetchedPlaylist(pathlist: widget.storyteller.pathPlaylist));
+    // tellerBloc = BlocProvider.of<TellerBloc>(context);
+    // tellerBloc.add(FetchedTellerEvent());
+    print(widget.storyteller);
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: yellowColor,
+      backgroundColor: widget.storyteller.stColor ?? yellowColor,
       appBar: AppBar(
-        backgroundColor: yellowColor,
+        backgroundColor: widget.storyteller.stColor ?? yellowColor,
         leading: IconButton(
           icon: Icon(Icons.chevron_left_rounded),
           iconSize: 40.0,
@@ -57,92 +59,88 @@ class _TellerPlayListState extends State<TellerPlayList> {
         ),
         elevation: 0.0,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: BlocBuilder<TellerBloc, TellerState>(
-                builder: (context, state) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "Bedtime",
-                          style: TextStyle(
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                          maxLines: 2,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: BlocBuilder<TellerBloc, TellerState>(
+              builder: (context, state) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      flex: 6,
+                      child: Text(
+                        widget.storyteller.stName ?? "",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 28.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
+                        maxLines: 2,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                          child: Image.network(
-                              'https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/89763.jpg?raw=true',
-                              width: 180,
-                              height: 180,
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
-            Container(
-              height: 0.6 * size.height,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
-                ),
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    height: 0.6 * size.height,
-                    child: BlocBuilder<VideoBloc, VideoState>(
-                      buildWhen: (previous, current) =>
-                          previous.situation != current.situation,
-                      bloc: videoBloc,
-                      builder: (context, state) {
-                        return Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: ListView.builder(
-                            itemCount: state.videoList.length,
-                            itemBuilder: (context, index) => _buildSonglistItem(
-                              image: state.videoList[index].imageUrl,
-                              title: state.videoList[index].videoName,
-                              subtitle: state.videoList[index].videoChannel,
-                            ),
-                          ),
-                        );
-                      },
                     ),
-                  )
-                ],
+                    Expanded(
+                      flex: 4,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        child: Image.network(widget.storyteller.imageUrl,
+                            width: 180, height: 180, fit: BoxFit.cover),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(
+            height: 0.6 * size.height,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(50),
+                topRight: Radius.circular(50),
               ),
             ),
-          ],
-        ),
+            child: Column(
+              children: [
+                Container(
+                  height: 0.6 * size.height,
+                  child: BlocBuilder<VideoBloc, VideoState>(
+                    bloc: videoBloc,
+                    builder: (context, state) {
+                      return Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: ListView.builder(
+                          itemCount: state.videoList.length,
+                          itemBuilder: (context, index) => _buildSonglistItem(
+                            image: state.videoList[index].imageUrl,
+                            title: state.videoList[index].videoName,
+                            subtitle: state.videoList[index].videoChannel,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
 Widget _buildSonglistItem(
-    {@required String image, @required String title, @required String subtitle}) {
+    {@required String image,
+    @required String title,
+    @required String subtitle}) {
   return ListTile(
     title: Text(title),
     subtitle: Text(subtitle),

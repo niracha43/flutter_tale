@@ -18,8 +18,8 @@ class AuthService extends BaseService {
     return _service;
   }
 
-  void initialize({AuthenBloc authenBloc}) {
-    super.initial(authenBloc: authenBloc);
+  void initialize() {
+    super.initial();
   }
 
   Future<Profile> signin(String email, String password) async {

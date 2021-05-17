@@ -1,16 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:mobile_project/bloc/authen/authen_bloc.dart';
-import 'package:mobile_project/models/teller_model.dart';
+import 'package:mobile_project/models/video.dart';
 
-import 'auth_service.dart';
 import 'best_service.dart';
 
 class TellerService extends BaseService {
   final endpoint = "/auth";
   static TellerService _service;
-
-  //final GoogleSignIn _googleSignIn = GoogleSignIn();
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
 
   TellerService.Init();
   factory TellerService() {
@@ -20,8 +15,8 @@ class TellerService extends BaseService {
     return _service;
   }
 
-  void initialize({AuthenBloc authenBloc}) {
-    super.initial(authenBloc: authenBloc);
+  void initialize() {
+    super.initial();
   }
 
   // Future<TellerModel> getlist(String email, String password) async {
@@ -30,9 +25,9 @@ class TellerService extends BaseService {
 
   //   return TellerModel.fromMap(rs.data['data']);
   // }
-  Future<List<TellerModel>> getList(String jsonName) async {
+  Future<List<VideoList>> getList(String jsonName) async {
     Response rs = await super.get(jsonName);
-    return List<TellerModel>.from(rs.data.map((d) => TellerModel.fromJson(d)));
+    return List<VideoList>.from(rs.data.map((d) => VideoList.fromJson(d)));
   }
 
   // Future<Auth> signup(String email, String password) async {

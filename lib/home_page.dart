@@ -15,8 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-   VideoBloc videoBloc;
-   TellerBloc tellerBloc;
+  VideoBloc videoBloc;
+  TellerBloc tellerBloc;
   @override
   void initState() {
     videoBloc = BlocProvider.of<VideoBloc>(context);
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
         if (index == 0) {
           videoBloc..add(PopularEvent());
         } else {
-          videoBloc..add(RecentEvent());
+          videoBloc..add(AllEvent());
         }
       },
       groupAlignment: -0.1,

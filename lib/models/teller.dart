@@ -51,4 +51,9 @@ class Storyteller extends Equatable {
 
   @override
   List<Object> get props => [];
+
+  @override
+  String toString() {
+    return 'Storyteller $id,$stName,$stChannel,$imageUrl,$stColor';
+  }
 }
