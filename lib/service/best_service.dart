@@ -9,8 +9,7 @@ class BaseService {
   final Dio _clientSecondary = Dio();
 
   void initial({AuthenBloc? authenBloc}) {
-    _baseUrl =
-        'http://selab.mfu.ac.th:9001/download?bucket=mobdev62&filename=6231305014'; // TODO: Get url from config
+    _baseUrl = 'http://178.128.212.237/json'; // TODO: Get url from config
     _authenBloc = authenBloc;
     // _baseUrl = FlutterConfig.get(Constants.key_endpoint_service);
     setupClient(_client, baseUrl: _baseUrl);

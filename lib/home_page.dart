@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_project/myaccount.dart';
+import 'package:mobile_project/currentplayer.dart';
 import 'package:mobile_project/notificationPage.dart';
 import 'package:mobile_project/searchPage.dart';
-import 'package:fluttericon/linearicons_free_icons.dart';
 import 'package:fluttericon/octicons_icons.dart';
+import 'package:mobile_project/tellerplaylist.dart';
 
 import 'bloc/teller/teller_bloc.dart';
 import 'bloc/video/video_bloc.dart';
@@ -35,13 +35,10 @@ class _HomePageState extends State<HomePage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Discover',
-          // textAlign: TextAlign.start,
-          style: Theme.of(context)
-              .textTheme
-              .headline4!
-              .copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
+        title: Image.network(
+          "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/logo_homepage.png?raw=true",
+          height: 250,
+          width: 250,
         ),
         automaticallyImplyLeading: false,
         elevation: 0,
@@ -101,7 +98,9 @@ class _HomePageState extends State<HomePage> {
           TextStyle(color: kLightColor, fontWeight: FontWeight.bold),
       leading: InkWell(
         onTap: () {
-          Navigator.of(context).pushNamed(StorytellerPage.routesName);
+          // Navigator.of(context).pushNamed(StorytellerPage.routesName);
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => StorytellerPage()));
         },
         child: Column(
           children: [
@@ -128,7 +127,7 @@ class _HomePageState extends State<HomePage> {
             quarterTurns: -1,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Popular                      '),
+              child: Text('Popular'),
             ),
           ),
         ),
@@ -201,13 +200,13 @@ class _HomePageState extends State<HomePage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Text(
-                title,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-              ),
+              // child: Text(
+              //   title,
+              //   style: TextStyle(
+              //       color: Colors.white,
+              //       fontWeight: FontWeight.bold,
+              //       fontSize: 20),
+              // ),
             ),
             Expanded(child: Container(height: 0)),
             Container(
@@ -318,12 +317,12 @@ class _HomePageState extends State<HomePage> {
   Widget _buildBottomBar() {
     int _selectedIndex = 0;
 
-    List items = [
-      LineariconsFree.home,
-      Octicons.search,
-      Icons.notifications_none,
-      Icons.person_outline
-    ];
+    // List items = [
+    //   LineariconsFree.home,
+    //   Octicons.search,
+    //   Icons.notifications_none,
+    //   Icons.person_outline
+    // ];
     return Container(
       height: 65,
       color: kSecondaryColor,
@@ -364,10 +363,10 @@ class _HomePageState extends State<HomePage> {
                     )),
                 FlatButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SearchPage()));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => TellerPlayList()));
                     },
                     child: Icon(
                       Octicons.search,
@@ -389,7 +388,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => StorytellerPage()));
+                              builder: (context) => CurrentPlayerPage()));
                     },
                     child: Icon(
                       Icons.content_copy_rounded,

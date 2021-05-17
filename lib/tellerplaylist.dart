@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_project/models/allvideo_model.dart';
+import 'package:mobile_project/storyteller_page.dart';
 
 import 'bloc/teller/teller_bloc.dart';
 import 'bloc/video/video_bloc.dart';
@@ -7,6 +9,12 @@ import 'constants.dart';
 
 class TellerPlayList extends StatefulWidget {
   static String? routesName;
+  final String pathlist;
+
+  const TellerPlayList({Key? key, required this.pathlist}) : super(key: key);
+  // final Allvideo allvideo;
+
+  // const TellerPlayList({Key? key, required this.allvideo}) : super(key: key);
 
   @override
   _TellerPlayListState createState() => _TellerPlayListState();
@@ -21,6 +29,7 @@ class _TellerPlayListState extends State<TellerPlayList> {
     videoBloc!.add(FetchedEvent());
     tellerBloc = BlocProvider.of<TellerBloc>(context);
     tellerBloc.add(FetchedTellerEvent());
+    print(widget.pathlist);
   }
 
   @override
@@ -30,6 +39,15 @@ class _TellerPlayListState extends State<TellerPlayList> {
       backgroundColor: yellowColor,
       appBar: AppBar(
         backgroundColor: yellowColor,
+        leading: IconButton(
+          icon: Icon(Icons.chevron_left_rounded),
+          iconSize: 40.0,
+          color: Colors.white,
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => StorytellerPage()));
+          },
+        ),
         title: Text(
           "Playlist",
           style: TextStyle(
@@ -40,12 +58,12 @@ class _TellerPlayListState extends State<TellerPlayList> {
         ),
         elevation: 0.0,
       ),
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             SizedBox(
-              height: 50,
+              height: 10,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -53,20 +71,30 @@ class _TellerPlayListState extends State<TellerPlayList> {
                 builder: (context, state) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        "Koosloos",
-                        style: TextStyle(
-                          fontSize: 28.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Bedtime",
+                          style: TextStyle(
+                            fontSize: 28.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                          maxLines: 2,
                         ),
                       ),
-                      Image.network(
-                        'https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.15752-9/166232112_797043411234904_6598310445283045966_n.png?_nc_cat=101&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGrssWHvfZJ078q5pFj2ySoX7k8hxpB0M5fuTyHGkHQzrZ9FGnogNorA3xjtpjH9v78q6sh1VQnrBVYMuSTB7i9&_nc_ohc=nrjovG3K7F0AX8yxoyc&_nc_ht=scontent.fbkk5-6.fna&oh=932e64855c511908d833309a4e486207&oe=6087645B',
-                        width: 300,
-                        height: 300,
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          child: Image.network(
+                              'https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/89763.jpg?raw=true',
+                              width: 180,
+                              height: 180,
+                              fit: BoxFit.cover),
+                        ),
                       ),
                     ],
                   );
@@ -92,12 +120,15 @@ class _TellerPlayListState extends State<TellerPlayList> {
                           previous.situation != current.situation,
                       bloc: videoBloc,
                       builder: (context, state) {
-                        return ListView.builder(
-                          itemCount: state.videoList.length,
-                          itemBuilder: (context, index) => _buildSonglistItem(
-                            image: state.videoList[index].imageUrl!,
-                            title: state.videoList[index].videoName!,
-                            subtitle: state.videoList[index].videoChannel!,
+                        return Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: ListView.builder(
+                            itemCount: state.videoList.length,
+                            itemBuilder: (context, index) => _buildSonglistItem(
+                              image: state.videoList[index].imageUrl!,
+                              title: state.videoList[index].videoName!,
+                              subtitle: state.videoList[index].videoChannel!,
+                            ),
                           ),
                         );
                       },
@@ -113,7 +144,8 @@ class _TellerPlayListState extends State<TellerPlayList> {
   }
 }
 
-Widget _buildSonglistItem({required String image, required String title, required String subtitle}) {
+Widget _buildSonglistItem(
+    {required String image, required String title, required String subtitle}) {
   return ListTile(
     title: Text(title),
     subtitle: Text(subtitle),

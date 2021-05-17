@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:mobile_project/home_page.dart';
+import 'package:mobile_project/models/allvideo_model.dart';
 import 'package:mobile_project/models/teller.dart';
+import 'package:mobile_project/notificationPage.dart';
 import 'package:mobile_project/tellerplaylist.dart';
 import 'bloc/teller/teller_bloc.dart';
 import 'constants.dart';
-import 'constants.dart';
+import 'models/tellerList.dart';
 
 class StorytellerPage extends StatefulWidget {
   static String routesName = "/storytellerpage";
+
   @override
   _StorytellerState createState() => _StorytellerState();
 }
 
 class _StorytellerState extends State<StorytellerPage> {
   late TellerBloc tellerBloc;
+
   @override
   void initState() {
     tellerBloc = BlocProvider.of<TellerBloc>(context);
@@ -62,150 +65,154 @@ class _StorytellerState extends State<StorytellerPage> {
         // ],
       ),
       body: Container(
-          padding: EdgeInsets.only(top: 2),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(50.0),
-              topRight: Radius.circular(50.0),
-            ),
+        padding: EdgeInsets.only(top: 2),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(50.0),
+            topRight: Radius.circular(50.0),
           ),
-          alignment: Alignment.center,
-          child: BlocBuilder<TellerBloc, TellerState>(
-            builder: (context, state) {
-              var refreshIndicator = RefreshIndicator(
-                onRefresh: () async {
-                  handleRefresh;
-                },
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: state.storyteller.length,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return TellerCard(
-                      telleritem: state.storyteller[index],
-                    );
-                  },
-                ),
-              );
-              return refreshIndicator;
-            },
-          )),
-    );
-  }
-}
-
-Widget myDetailsContainer1({String? stChannel, String? stName}) {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.only(left: 8.0),
-        child: Container(
-            child: Text(
-          stName!,
-          style: TextStyle(
-              color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),
-        )),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 8.0),
-        // child: Container(
-        //     child: Row(
-        //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //       children: <Widget>[
-        //         Container(child: Text("4.3",
-        //           style: TextStyle(color: Colors.black54, fontSize: 18.0,),)),
-        //         Container(child: Icon(
-        //           Icons.star_rounded, color: Colors.white,
-        //           size: 15.0,),),
-        //         Container(child: Icon(
-        //           Icons.star_rounded, color: Colors.white,
-        //           size: 15.0,),),
-        //         Container(child: Icon(
-        //           Icons.star_rounded, color: Colors.white,
-        //           size: 15.0,),),
-        //         Container(child: Icon(
-        //           Icons.star_rounded, color: Colors.white,
-        //           size: 15.0,),),
-        //         Container(child: Icon(
-        //           Icons.star_half_rounded, color: Colors.white,
-        //           size: 15.0,),),
-        //         Container(child: Text("(321) \u00B7 0.9 mi",
-        //           style: TextStyle(color: Colors.black54, fontSize: 18.0,),)),
-        //       ],)),
-      ),
-      Container(
-          child: Text(
-        stChannel!,
-        style: TextStyle(
-            color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),
-      )),
-      Container(
-        child: ButtonBar(
-          alignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              onPressed: () => {},
-              color: Colors.black54,
-              child: Text(
-                '    Show More    ',
-                style: TextStyle(color: Colors.white),
-              ),
-              shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(30.0),
-              ),
-            ),
-          ],
         ),
-      ),
-    ],
-  );
-}
-
-class TellerCard extends StatelessWidget {
-  final Storyteller telleritem;
-
-  const TellerCard({Key? key, required this.telleritem}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 25, left: 25, top: 20),
-      child: Container(
-        child: new FittedBox(
-          child: Material(
-              color: telleritem.stColor ?? kPrimaryColor,
-              elevation: 5.0,
-              borderRadius: BorderRadius.circular(24.0),
-              shadowColor: Color(0x802196F3),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: myDetailsContainer1(
-                          stName: telleritem.stName,
-                          stChannel: telleritem.stChannel),
-                    ),
-                  ),
-                  Container(
-                    width: 300,
-                    height: 200,
-                    child: ClipRRect(
-                      borderRadius: new BorderRadius.circular(24.0),
-                      child: Image.network(
-                        telleritem.imageUrl!,
-                        fit: BoxFit.contain,
+        alignment: Alignment.center,
+        // child: BlocBuilder<TellerBloc, TellerState>(
+        //   builder: (context, state) {
+        //     var refreshIndicator = RefreshIndicator(
+        //       onRefresh: () async {
+        //         handleRefresh;
+        //       },
+        //       child: ListView.builder(
+        //         scrollDirection: Axis.vertical,
+        //         itemCount: state.storyteller.length,
+        //         shrinkWrap: true,
+        //         physics: NeverScrollableScrollPhysics(),
+        //         itemBuilder: (context, index) {
+        //           return TellerCard(
+        //             telleritem: state.storyteller[index],
+        //           );
+        //         },
+        //       ),
+        //     );
+        //     return refreshIndicator;
+        //   },
+        // )
+        child: BlocBuilder<TellerBloc, TellerState>(
+          builder: (context, state) {
+            print("${state.storyteller}");
+            //     var refreshIndicator = RefreshIndicator(
+            //       onRefresh: () async {
+            //         handleRefresh;
+            //       },
+            return Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: tellerLists.length,
+                itemBuilder: (context, index) {
+                  return Hero(
+                    tag: "storytelleritem",
+                    child: FittedBox(
+                      child: Material(
+                        child: Card(
+                          color:
+                              state.storyteller[index].stColor ?? kPrimaryColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          elevation: 5,
+                          child: Row(
+                            children: <Widget>[
+                              Column(
+                                children: [
+                                  TellerCard(state.storyteller[index]),
+                                  Container(
+                                    width: 120,
+                                    height: 40,
+                                    child: ButtonBar(
+                                      alignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        RaisedButton(
+                                          onPressed: () => {
+                                            Navigator.of(context)
+                                                .push(MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  TellerPlayList(
+                                                      pathlist: state
+                                                          .storyteller[index]
+                                                          .pathPlaylist!),
+                                            )),
+                                          },
+                                          color: Colors.white,
+                                          child: Text(
+                                            'Show More',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 10),
+                                          ),
+                                          shape: new RoundedRectangleBorder(
+                                            borderRadius:
+                                                new BorderRadius.circular(30.0),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                width: 90,
+                                height: 100,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  child: Image.network(
+                                      state.storyteller[index].imageUrl!,
+                                      fit: BoxFit.cover,
+                                      height: double.infinity,
+                                      width: double.infinity,
+                                      alignment: Alignment.topRight),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              )),
+                  );
+                },
+              ),
+            );
+          },
         ),
       ),
     );
   }
+}
+
+Widget TellerCard(Storyteller? _storyteller) {
+  return Container(
+    //width: 150,
+    child: Column(
+      //mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Text(
+            _storyteller!.stName!,
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 10, color: Colors.white),
+          ),
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        Text(
+          _storyteller.stChannel!,
+          style: TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 9.5,
+              color: Colors.white),
+        ),
+      ],
+    ),
+  );
 }

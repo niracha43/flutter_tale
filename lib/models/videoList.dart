@@ -42,7 +42,7 @@ List<VideoList> videopopularLists = [
       videoChannel: "Koosloos_Ulias Channel",
       date: DateTime.now(),
       imageUrl:
-          "https://i.pinimg.com/564x/33/c8/5d/33c85d166d51591e3b16ce68f576cab1.jpg",
+          "https://i.pinimg.com/564x/0d/56/37/0d56378b98cc769aa847c159a5477362.jpg",
       videoUrl: "https://youtu.be/_ClOqGf44Vw"),
   VideoList(
       id: 2,
@@ -50,7 +50,7 @@ List<VideoList> videopopularLists = [
       videoChannel: "Hmong Bedtime Stories",
       date: DateTime.now(),
       imageUrl:
-          "https://i.pinimg.com/564x/39/48/76/394876e0e2129f959bd910b65da6f3f8.jpg",
+          "https://i.pinimg.com/564x/d9/7a/cf/d97acf23b047a6a2e9e6dc58e40eed2a.jpg",
       videoUrl: "https://youtu.be/clyrQoupTSQ"),
   VideoList(
       id: 3,
@@ -58,7 +58,7 @@ List<VideoList> videopopularLists = [
       videoChannel: "Dab hais hmoob",
       date: DateTime.now(),
       imageUrl:
-          "https://i.pinimg.com/564x/bf/1d/51/bf1d51aabe02cb244c1f332b19f805bf.jpg",
+          "https://i.pinimg.com/564x/12/8b/05/128b05c342d8b7aecd8fb763ec496cdb.jpg",
       videoUrl: "https://youtu.be/b1Y7tiPaXuE"),
   VideoList(
       id: 4,
@@ -66,7 +66,7 @@ List<VideoList> videopopularLists = [
       videoChannel: "PHMOOB NOOS HAIS",
       date: DateTime.now(),
       imageUrl:
-          "https://i.pinimg.com/564x/f7/21/01/f72101afebd1fbf2c28d3c43b499c211.jpg",
+          "https://i.pinimg.com/564x/0a/3a/b2/0a3ab29a1e4198e9347ad77995aea2b1.jpg",
       videoUrl: "https://youtu.be/TEHxWhE8SBU")
 ];
 

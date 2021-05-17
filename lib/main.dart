@@ -35,9 +35,9 @@ class MyApp extends StatelessWidget {
           primaryColor: kSecondaryColor,
         ),
         home: HomePage(),
-        routes: {
-          StorytellerPage.routesName: (ctx) => StorytellerPage(),
-        },
+        // routes: {
+        //   StorytellerPage.routesName: (ctx) => StorytellerPage(),
+        // },
       ),
     );
   }

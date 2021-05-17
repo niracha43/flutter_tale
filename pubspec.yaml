@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^2.0.0
+  google_fonts: ^1.1.1
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^8.2.0
   flutter_bloc: ^7.0.0
@@ -32,11 +32,11 @@ dependencies:
   date_time_format: ^2.0.1
   flutter_icons: ^1.1.0
   fluttericon: ^2.0.0
-  dio: ^4.0.0
+  dio: ^3.0.10
   formz: ^0.4.0
-  http: ^0.13.3
-  video_player: ^2.1.1
-
+  #http: ^0.13.3
+  flutter_launcher_icons: ^0.9.0
+  yoyo_player: ^0.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -47,7 +47,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_launcher_icons: ^0.9.0
 
 flutter_icons:
   image_path: "assets/images/logo.png"
@@ -68,6 +67,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/2.png
   #   - images/a_dot_ham.jpeg 
 
   # An image asset can refer to one or more resolution-specific "variants", see
