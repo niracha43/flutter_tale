@@ -7,6 +7,8 @@ class TellerService extends BaseService {
   final endpoint = "/auth";
   static TellerService _service;
 
+
+
   TellerService.Init();
   factory TellerService() {
     if (_service == null) {

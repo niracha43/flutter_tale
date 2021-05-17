@@ -62,28 +62,9 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
             );
     }
     if (event is FetchedPlaylist) {
-      List<VideoList> _videoList =
-          await TellerService().getList(event.pathlist);
-
-      yield _videoList.isEmpty
-          ? state.copyWith(videoList: [])
-          : state.copyWith(
-              status: ProjectFetchedStatus.success,
-              videoList: _videoList,
-            );
+       yield await _mapFetchedToState(event);
     }
-    // if (event is RecentEvent) {
-    //   List<VideoList> _videoList = videorecentLists;
 
-    //   yield _videoList.isEmpty
-    //       ? state.coppyWith(videoList: [])
-    //       : state.coppyWith(
-    //           status: ProjectFetchedStatus.success,
-    //           videoList: _videoList,
-    //           situation: Situation.recent,
-    //         );
-    // }
-    // TODO: implement mapEventToState
   }
 
   Future<VideoState> _mapFetchedToState(VideoEvent event) async {
