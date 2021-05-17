@@ -11,7 +11,6 @@ class BaseService {
     // _baseUrl = FlutterConfig.get(Constants.key_endpoint_service);
     setupClient(_client, baseUrl: _baseUrl);
     setupClient(_clientSecondary, baseUrl: _baseUrl);
-
   }
 
   void setupClient(
@@ -29,10 +28,7 @@ class BaseService {
 
   Future<Response<T>> get<T>(String url) {
     Options options = Options(contentType: Headers.jsonContentType);
-    return _client.get<T>(url,
-        options: options);
-
-
+    return _client.get<T>(url, options: options);
   }
 
   Future<Response<T>> put<T>(String url, {body, progress}) {

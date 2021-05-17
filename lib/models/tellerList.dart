@@ -17,7 +17,7 @@ List<Storyteller> tellerLists = [
       imageUrl:
           "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/89764.jpg?raw=true",
       stColor: blueColor,
-      pathPlaylist: "/bedtime.json"),
+      pathPlaylist: "/koosloos.json"),
   Storyteller(
       id: 3,
       stName: 'Dab hais hmoob ',
@@ -25,7 +25,7 @@ List<Storyteller> tellerLists = [
       imageUrl:
           "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/13233011_1754935194728076_3593842600656914117_n.jpeg?raw=true",
       stColor: favoriteColor,
-      pathPlaylist: "/bedtime.json"),
+      pathPlaylist: "/dab.json"),
   Storyteller(
       id: 4,
       stName: 'HMOOB NOOS HAIS',
@@ -33,5 +33,5 @@ List<Storyteller> tellerLists = [
       imageUrl:
           "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/89781.jpg?raw=true",
       stColor: allColor,
-      pathPlaylist: "/bedtime.json"),
+      pathPlaylist: "/hmoob.json"),
 ];
