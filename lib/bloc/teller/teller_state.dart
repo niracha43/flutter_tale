@@ -1,7 +1,7 @@
 part of 'teller_bloc.dart';
 
 enum ProjectFetchedStatus { initial, success, failure }
-enum Situation {storyteller, popular, recent}
+enum Situation { storyteller, popular, recent }
 
 class TellerState extends Equatable {
   final ProjectFetchedStatus status;
@@ -9,12 +9,12 @@ class TellerState extends Equatable {
   final Situation situation;
 
   TellerState({
-    this.status = ProjectFetchedStatus.initial, 
+    this.status = ProjectFetchedStatus.initial,
     this.storyteller = const <Storyteller>[],
     this.situation = Situation.storyteller,
-    });
+  });
 
-  TellerState coppyWith({
+  TellerState copyWith({
     ProjectFetchedStatus status,
     List<Storyteller> storyteller,
     Situation situation,
@@ -22,7 +22,7 @@ class TellerState extends Equatable {
     return TellerState(
       status: status ?? this.status,
       storyteller: storyteller ?? this.storyteller,
-      situation: situation?? this.situation,
+      situation: situation ?? this.situation,
     );
   }
 

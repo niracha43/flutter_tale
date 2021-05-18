@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_project/currentplayer.dart';
 import 'package:mobile_project/models/teller.dart';
 import 'package:mobile_project/storyteller_page.dart';
 
@@ -118,10 +119,19 @@ class _TellerPlayListState extends State<TellerPlayList> {
                         padding: const EdgeInsets.all(15.0),
                         child: ListView.builder(
                           itemCount: state.videoList.length,
-                          itemBuilder: (context, index) => _buildSonglistItem(
-                            image: state.videoList[index].imageUrl,
-                            title: state.videoList[index].videoName,
-                            subtitle: state.videoList[index].videoChannel,
+                          itemBuilder: (context, index) => InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    CurrentPlayerPage(
+                                        videoList: state.videoList[index]),
+                              ));
+                            },
+                            child: _buildSonglistItem(
+                              image: state.videoList[index].imageUrl,
+                              title: state.videoList[index].videoName,
+                              date: state.videoList[index].date,
+                            ),
                           ),
                         ),
                       );
@@ -138,16 +148,14 @@ class _TellerPlayListState extends State<TellerPlayList> {
 }
 
 Widget _buildSonglistItem(
-    {@required String image,
-    @required String title,
-    @required String subtitle}) {
+    {@required String image, @required String title, @required DateTime date}) {
   return ListTile(
     title: Text(title ?? ''),
-    subtitle: Text(subtitle ?? ''),
+    subtitle: Text(date.toString() ?? ''),
     leading: Container(
-      child: image != null  ? Image.network(image) : null,
+      child: image != null ? Image.network(image) : null,
       height: 50,
-      width: 50,
+      width: 70,
       decoration: BoxDecoration(
           //image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
           borderRadius: BorderRadius.circular(10.0)),

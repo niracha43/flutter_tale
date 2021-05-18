@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:mobile_project/models/notification_model.dart';
 import 'package:mobile_project/models/video.dart';
 
 import 'best_service.dart';
@@ -6,8 +7,6 @@ import 'best_service.dart';
 class TellerService extends BaseService {
   final endpoint = "/auth";
   static TellerService _service;
-
-
 
   TellerService.Init();
   factory TellerService() {
@@ -30,6 +29,22 @@ class TellerService extends BaseService {
   Future<List<VideoList>> getList(String jsonName) async {
     Response rs = await super.get(jsonName);
     return List<VideoList>.from(rs.data.map((d) => VideoList.fromJson(d)));
+  }
+
+  Future<List<VideoList>> getPopularList() async {
+    Response rs = await super.get('/popular.json');
+    return List<VideoList>.from(rs.data.map((d) => VideoList.fromJson(d)));
+  }
+
+  Future<List<VideoList>> getAllvideoList() async {
+    Response rs = await super.get('/allvideo.json');
+    return List<VideoList>.from(rs.data.map((d) => VideoList.fromJson(d)));
+  }
+
+  Future<List<NotificationModel>> getNotificationList() async {
+    Response rs = await super.get('/notification.json');
+    return List<NotificationModel>.from(
+        rs.data.map((d) => NotificationModel.fromJson(d)));
   }
 
   // Future<Auth> signup(String email, String password) async {

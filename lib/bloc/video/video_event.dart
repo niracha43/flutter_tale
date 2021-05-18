@@ -25,6 +25,14 @@ class PopularEvent extends VideoEvent {
   List<Object> get props => [];
 }
 
+class SearchEvent extends VideoEvent {
+  SearchEvent({this.searchText});
+  final String searchText;
+
+  @override
+  List<Object> get props => [];
+}
+
 // class RecentEvent extends VideoEvent{
 //   RecentEvent();
 
@@ -34,13 +42,6 @@ class PopularEvent extends VideoEvent {
 
 class AllEvent extends VideoEvent {
   AllEvent();
-
-  @override
-  List<Object> get props => [];
-}
-
-class FavouritesEvent extends VideoEvent {
-  FavouritesEvent();
 
   @override
   List<Object> get props => [];

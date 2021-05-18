@@ -3,7 +3,7 @@
         "id" : 1,
         "videoName" : "Muab Me Nyuam Mus Pauv Nyuj Qus",
         "videoChannel" : "HMOOB NOOS HAIS",
-        "date" : "24/04/2021",
+        "date" : "2021-04-24 00:00:00",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/HMOOB%20NOOS%20HAIS/Screen%20Shot%202564-05-13%20at%2021.06.08.png?raw=true",
         "videoUrl" : "http://178.128.212.237/vdo/Hmoob1.mp4"
       },
@@ -11,7 +11,7 @@
         "id" : 2,
         "videoName" : "2 Txiv Tub Txoj Kev Lim Hiam",
         "videoChannel" : "HMOOB NOOS HAIS",
-        "date" : "29/04/2021",
+        "date" : "2021-04-29 00:00:00",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/HMOOB%20NOOS%20HAIS/Screen%20Shot%202564-05-14%20at%2015.32.40.png?raw=true",
         "videoUrl" : "http://178.128.212.237/vdo/Hmoob2.mp4"
       },
@@ -19,7 +19,7 @@
         "id" : 3,
         "videoName" : "Ua Neeb Ntes Tus Neeg Txawj Tso Dab",
         "videoChannel" : "HMOOB NOOS HAIS",
-        "date" : "23/04/2021",
+        "date" : "2021-04-23 00:00:00",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/HMOOB%20NOOS%20HAIS/Screen%20Shot%202564-05-14%20at%2015.33.46.png?raw=true",
         "videoUrl" : "http://178.128.212.237/vdo/Hmoob3.mp4"
       },
@@ -27,7 +27,7 @@
         "id" : 4,
         "videoName" : "Mus Ua Neeb Los Lig Lig",
         "videoChannel" : "HMOOB NOOS HAIS",
-        "date" : "06/05/2021",
+        "date" : "2021-05-06 00:00:00",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/HMOOB%20NOOS%20HAIS/Screen%20Shot%202564-05-14%20at%2015.34.25.png?raw=true",
         "videoUrl" : "http://178.128.212.237/vdo/Hmoob4.mp4"
       },
@@ -35,7 +35,7 @@
         "id" : 5,
         "videoName" : "Phim Nyuj Vaim Tom",
         "videoChannel" : "HMOOB NOOS HAIS",
-        "date" : "23/04/2021",
+        "date" : "2021-04-23 00:00:00",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/HMOOB%20NOOS%20HAIS/Screen%20Shot%202564-05-14%20at%2015.35.15.png?raw=true",
         "videoUrl" : "http://178.128.212.237/vdo/Hmoob5.mp4"
       },
@@ -43,7 +43,7 @@
         "id" : 6,
         "videoName" : "Thov Phim Nyuj Vais Los Pab",
         "videoChannel" : "HMOOB NOOS HAIS",
-        "date" : "30/03/2021",
+        "date" : "2021-03-30 00:00:00",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/HMOOB%20NOOS%20HAIS/Screen%20Shot%202564-05-06%20at%2011.02.18.png?raw=true",
         "videoUrl" : "http://178.128.212.237/vdo/Hmoob6.mp4"
       },
@@ -51,7 +51,7 @@
         "id" : 7,
         "videoName" : "2 Viv Ncaus Tham Tau Dab Toj Ntxas",
         "videoChannel" : "HMOOB NOOS HAIS",
-        "date" : "26/04/2021",
+        "date" : "2021-04-26 00:00:00",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/HMOOB%20NOOS%20HAIS/Screen%20Shot%202564-05-06%20at%2011.03.00.png?raw=true",
         "videoUrl" : "http://178.128.212.237/vdo/Hmoob7.mp4"
       },
@@ -59,7 +59,7 @@
         "id" : 8,
         "videoName" : "Yawg Cuab Hlua Mag Nyab Dua",
         "videoChannel" : "HMOOB NOOS HAIS",
-        "date" : "05/05/2021",
+        "date" : "2021-05-05 00:00:00",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/HMOOB%20NOOS%20HAIS/Screen%20Shot%202564-05-06%20at%2011.03.28.png?raw=true",
         "videoUrl" : "http://178.128.212.237/vdo/Hmoob8.mp4"
       },
@@ -67,7 +67,7 @@
         "id" : 9,
         "videoName" : "Kev Npam Loj Heev",
         "videoChannel" : "HMOOB NOOS HAIS",
-        "date" : "28/04/2021",
+        "date" : "2021-04-28 00:00:00",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/HMOOB%20NOOS%20HAIS/Screen%20Shot%202564-05-06%20at%2011.06.01.png?raw=true",
         "videoUrl" : "http://178.128.212.237/vdo/Hmoob9.mp4"
       },
@@ -75,7 +75,7 @@
         "id" : 10,
         "videoName" : "Tsov Tom Nyab Nom Npis",
         "videoChannel" : "HMOOB NOOS HAIS",
-        "date" : "19/04/2021",
+        "date" : "2021-04-19 00:00:00",
         "imageUrl" : "https://github.com/niracha43/ImageURL_projectMobile_dev/blob/main/assets/HMOOB%20NOOS%20HAIS/Screen%20Shot%202564-05-06%20at%2011.05.39.png?raw=true",
         "videoUrl" : "http://178.128.212.237/vdo/Hmoob10.mp4"
       }

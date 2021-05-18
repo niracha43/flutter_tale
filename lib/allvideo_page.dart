@@ -1,36 +1,27 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_project/models/allvideo_model.dart';
+import 'package:mobile_project/tellerplaylist.dart';
 
+import 'bloc/teller/teller_bloc.dart';
 import 'bloc/video/video_bloc.dart';
 import 'constants.dart';
 import 'currentplayer.dart';
-import 'models/search_widget.dart';
 
-class SearchPage extends StatefulWidget {
+class Allvideo extends StatefulWidget {
   @override
-  _SearchPageState createState() => _SearchPageState();
+  _AllvideoState createState() => _AllvideoState();
 }
 
-class _SearchPageState extends State<SearchPage> {
-  TextEditingController __searchcontroller = TextEditingController();
-  String query = '';
+class _AllvideoState extends State<Allvideo> {
   VideoBloc videoBloc;
+
   @override
   void initState() {
     videoBloc = BlocProvider.of<VideoBloc>(context);
 
+    videoBloc.add(AllEvent());
+
     super.initState();
-
-    init();
-  }
-
-  Future init() async {
-    // final allvideo = await SearchApi.getAllvideo(query);
-
-    // setState(() => this.allvideo = allvideo);
   }
 
   @override
@@ -49,7 +40,7 @@ class _SearchPageState extends State<SearchPage> {
           },
         ),
         title: Text(
-          "Search",
+          "All video",
           style: TextStyle(
             fontSize: 28.0,
             fontWeight: FontWeight.bold,
@@ -59,7 +50,7 @@ class _SearchPageState extends State<SearchPage> {
         elevation: 0.0,
       ),
       body: Container(
-        padding: EdgeInsets.only(top: 40),
+        padding: EdgeInsets.only(top: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -70,26 +61,8 @@ class _SearchPageState extends State<SearchPage> {
         alignment: Alignment.center,
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 20, left: 20),
-              child: TextField(
-                onChanged: (value) {
-                  videoBloc.add(SearchEvent(searchText: value));
-                },
-                controller: __searchcontroller,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search),
-                  hintText: 'Search Video',
-                  border: const OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(
-                      const Radius.circular(30.0),
-                    ),
-                  ),
-                ),
-              ),
-            ),
             Container(
-              height: size.height - 209,
+              height: size.height - 113,
               width: size.height,
               child: BlocBuilder<VideoBloc, VideoState>(
                 bloc: videoBloc,

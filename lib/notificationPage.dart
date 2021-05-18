@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_project/bloc/notification/notification_bloc.dart';
+import 'package:mobile_project/models/notification_model.dart';
 
 import 'constants.dart';
+import 'currentplayer.dart';
 import 'home_page.dart';
+import 'models/video.dart';
 
-class NotificationPage extends StatelessWidget {
+class NotificationPage extends StatefulWidget {
+  @override
+  _NotificationPageState createState() => _NotificationPageState();
+}
+
+class _NotificationPageState extends State<NotificationPage> {
+  NotificationBloc notificationBloc;
+  @override
+  void initState() {
+    notificationBloc = BlocProvider.of<NotificationBloc>(context);
+
+    notificationBloc.add(NotificateEvent());
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -59,39 +79,80 @@ class NotificationPage extends StatelessWidget {
                   Container(
                     width: 55.0,
                     height: 55.0,
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          "https://i.pinimg.com/564x/b3/11/b1/b311b1dd8cfd8083cd57677d98598048.jpg"),
+                    child: BlocBuilder<NotificationBloc, NotificationState>(
+                      bloc: notificationBloc,
+                      builder: (context, state) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListView.builder(
+                            itemCount: state.notification.length,
+                            itemBuilder: (context, index) =>
+                                _ListItemNotificate(state.notification[index]),
+                          ),
+                        );
+                      },
                     ),
                   ),
-                  SizedBox(
-                    width: 5.0,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text("Test Notification",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold)),
-                      Text("description", style: TextStyle(color: Colors.grey)),
-                    ],
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                    child: Image.network(
-                      "https://i.pinimg.com/564x/25/a6/fd/25a6fdf2e79348741107c75092c25e5f.jpg",
-                      height: 110,
-                      width: 100,
-                    ),
-                  )
                 ],
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+// VideoList({
+//         this.id,
+//         this.videoName,
+//         this.videoChannel,
+//         this.date,
+//         this.imageUrl,
+//         this.videoUrl,
+//     });
+  Widget _ListItemNotificate(NotificationModel data) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) => CurrentPlayerPage(
+              videoList: VideoList(
+                  videoName: data.videoName,
+                  date: data.date,
+                  videoChannel: data.videoChannel,
+                  videoUrl: data.videoUrl,
+                  imageUrl: data.imageUrl)),
+        ));
+      },
+      child: Container(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            CircleAvatar(
+              backgroundImage: NetworkImage(data.imageSt),
+            ),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(data.videoName,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold)),
+                ),
+                Text("${data.date}", style: TextStyle(color: Colors.grey)),
+              ],
+            ),
+            Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: Image.network(
+                data.imageUrl,
+                height: 110,
+                width: 100,
+              ),
+            )
+          ],
         ),
       ),
     );

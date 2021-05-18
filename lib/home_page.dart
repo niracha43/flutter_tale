@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_project/allvideo_page.dart';
 import 'package:mobile_project/currentplayer.dart';
+import 'package:mobile_project/models/teller.dart';
 import 'package:mobile_project/notificationPage.dart';
 import 'package:fluttericon/octicons_icons.dart';
+import 'package:mobile_project/searchPage.dart';
+import 'package:mobile_project/tellerplaylist.dart';
 
 import 'bloc/teller/teller_bloc.dart';
 import 'bloc/video/video_bloc.dart';
@@ -10,6 +14,10 @@ import 'constants.dart';
 import 'storyteller_page.dart';
 
 class HomePage extends StatefulWidget {
+  final Storyteller storyteller;
+
+  const HomePage({Key key, this.storyteller}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -155,9 +163,17 @@ class _HomePageState extends State<HomePage> {
             return ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: state.storyteller.length,
-              itemBuilder: (context, index) => _buildPlaylistItem(
-                  image: state.storyteller[index].imageUrl,
-                  title: state.storyteller[index].stName),
+              itemBuilder: (context, index) => InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        TellerPlayList(storyteller: state.storyteller[index]),
+                  ));
+                },
+                child: _buildPlaylistItem(
+                    image: state.storyteller[index].imageUrl,
+                    title: state.storyteller[index].stName),
+              ),
             );
           }),
         ),
@@ -169,14 +185,32 @@ class _HomePageState extends State<HomePage> {
                 previous.situation != current.situation,
             bloc: videoBloc,
             builder: (context, state) {
-              return ListView.builder(
-                itemCount: state.videoList.length,
-                itemBuilder: (context, index) => _buildSonglistItem(
-                  image: state.videoList[index].imageUrl,
-                  title: state.videoList[index].videoName,
-                  subtitle: state.videoList[index].videoChannel,
-                ),
-              );
+              return state.status != VideoStateStatus.success
+                  ? SizedBox(
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                        strokeWidth: 3.0,
+                      ),
+                      height: 25.0,
+                      width: 25.0,
+                    )
+                  : ListView.builder(
+                      itemCount: state.videoList.length,
+                      itemBuilder: (context, index) => InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                CurrentPlayerPage(
+                                    videoList: state.videoList[index]),
+                          ));
+                        },
+                        child: _buildSonglistItem(
+                          image: state.videoList[index].imageUrl,
+                          title: state.videoList[index].videoName,
+                          subtitle: state.videoList[index].videoChannel,
+                        ),
+                      ),
+                    );
             },
           ),
         )
@@ -361,10 +395,10 @@ class _HomePageState extends State<HomePage> {
                     )),
                 FlatButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => TellerPlayList()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearchPage()));
                     },
                     child: Icon(
                       Octicons.search,
@@ -383,10 +417,8 @@ class _HomePageState extends State<HomePage> {
                     )),
                 FlatButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CurrentPlayerPage()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Allvideo()));
                     },
                     child: Icon(
                       Icons.content_copy_rounded,
@@ -397,11 +429,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  // Widget getBody() {
-  //   return IndexedStack(
-  //     index: activeTab,
-  //     children: [HomePage(), SearchPage(), NotificationPage(), MyaccountPage()],
-  //   );
-  //}
 }

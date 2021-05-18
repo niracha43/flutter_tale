@@ -44,8 +44,8 @@ class TellerBloc extends Bloc<TellerEvent, TellerState> {
       List<Storyteller> _storyList = tellerLists;
 
       yield _storyList.isEmpty
-          ? state.coppyWith(storyteller: [])
-          : state.coppyWith(
+          ? state.copyWith(storyteller: [])
+          : state.copyWith(
               status: ProjectFetchedStatus.success,
               storyteller: _storyList,
             );

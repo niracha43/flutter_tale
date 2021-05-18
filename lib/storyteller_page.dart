@@ -9,6 +9,9 @@ import 'models/tellerList.dart';
 
 class StorytellerPage extends StatefulWidget {
   static String routesName = "/storytellerpage";
+  final Storyteller storyteller;
+
+  const StorytellerPage({Key key, this.storyteller}) : super(key: key);
 
   @override
   _StorytellerState createState() => _StorytellerState();

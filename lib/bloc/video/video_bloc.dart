@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_project/models/notification_model.dart';
 import 'package:mobile_project/models/video.dart';
 import 'package:mobile_project/models/videoList.dart';
 import 'package:mobile_project/service/storyteller_bord.dart';
@@ -46,25 +47,66 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
       yield _videoList.isEmpty
           ? state.copyWith(videoList: [])
           : state.copyWith(
-              status: ProjectFetchedStatus.success,
+              status: VideoStateStatus.success,
               videoList: _videoList,
             );
     }
     if (event is PopularEvent) {
-      List<VideoList> _videoList = videopopularLists;
+      yield state.copyWith(status: VideoStateStatus.initial);
+      List<VideoList> _videoList = await TellerService().getPopularList();
 
       yield _videoList.isEmpty
           ? state.copyWith(videoList: [])
           : state.copyWith(
-              status: ProjectFetchedStatus.success,
+              status: VideoStateStatus.success,
               videoList: _videoList,
               situation: Situation.popular,
             );
     }
-    if (event is FetchedPlaylist) {
-       yield await _mapFetchedToState(event);
+    if (event is AllEvent) {
+      yield state.copyWith(status: VideoStateStatus.initial);
+      try {
+        List<VideoList> _videoList = await TellerService().getAllvideoList();
+        yield _videoList.isEmpty
+            ? state.copyWith(videoList: [])
+            : state.copyWith(
+                status: VideoStateStatus.success,
+                videoList: _videoList,
+                situation: Situation.all,
+              );
+      } on Exception {
+        yield state.copyWith(
+          status: VideoStateStatus.failure,
+          videoList: [],
+        );
+      }
     }
 
+    if (event is SearchEvent) {
+      yield state.copyWith(status: VideoStateStatus.initial);
+      try {
+        List<VideoList> _videoList = await TellerService().getAllvideoList();
+
+        var listAllvideo = filter(event.searchText.toLowerCase(), _videoList);
+
+        yield listAllvideo.isEmpty
+            ? state.copyWith(videoList: [])
+            : state.copyWith(
+                status: VideoStateStatus.success,
+                videoList: listAllvideo,
+                situation: Situation.all,
+              );
+      } on Exception {
+        yield state.copyWith(
+          status: VideoStateStatus.failure,
+          videoList: [],
+        );
+      }
+    }
+
+    if (event is FetchedPlaylist) {
+      yield await _mapFetchedToState(event);
+    }
   }
 
   Future<VideoState> _mapFetchedToState(VideoEvent event) async {
@@ -76,15 +118,23 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
         return _videoList.isEmpty
             ? state.copyWith(videoList: [])
             : state.copyWith(
-                status: ProjectFetchedStatus.success,
+                status: VideoStateStatus.success,
                 videoList: _videoList,
               );
       } on Exception {
         return state.copyWith(
-          status: ProjectFetchedStatus.failure,
+          status: VideoStateStatus.failure,
           videoList: [],
         );
       }
     }
+  }
+
+  List<VideoList> filter(String keyword, List<VideoList> _videoList) {
+    return _videoList
+        .where((element) =>
+            element.videoName.toLowerCase().contains(keyword) ||
+            element.videoChannel.toLowerCase().contains(keyword))
+        .toList();
   }
 }
