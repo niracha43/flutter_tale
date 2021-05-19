@@ -134,7 +134,7 @@ class _NotificationPageState extends State<NotificationPage> {
               //   height: 110,
               //   width: 100,
               // ),
-              height: 80,
+              height: 60,
               width: 80,
               decoration: BoxDecoration(
                   image: DecorationImage(
