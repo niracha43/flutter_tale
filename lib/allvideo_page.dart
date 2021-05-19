@@ -62,7 +62,7 @@ class _AllvideoState extends State<Allvideo> {
         child: Column(
           children: <Widget>[
             Container(
-              height: size.height - 114,
+              height: size.height - 120,
               width: size.height,
               child: BlocBuilder<VideoBloc, VideoState>(
                 bloc: videoBloc,

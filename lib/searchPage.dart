@@ -89,7 +89,7 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
             Container(
-              height: size.height - 210,
+              height: size.height - 220,
               width: size.height,
               child: BlocBuilder<VideoBloc, VideoState>(
                 bloc: videoBloc,
