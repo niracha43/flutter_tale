@@ -124,30 +124,30 @@ class _CurrentPlayerPageState extends State<CurrentPlayerPage> {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10.0),
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(
-                        Icons.skip_previous,
-                        color: kPrimaryColor,
-                        size: 0.12 * size.width,
-                      ),
-                      Icon(
-                        Icons.play_circle_outline,
-                        color: kPrimaryColor,
-                        size: 0.18 * size.width,
-                      ),
-                      Icon(
-                        Icons.skip_next,
-                        color: kPrimaryColor,
-                        size: 0.12 * size.width,
-                      ),
-                    ],
-                  ),
-                )
+                // Container(
+                //   margin: EdgeInsets.symmetric(vertical: 10.0),
+                //   padding: EdgeInsets.symmetric(horizontal: 20.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //     children: [
+                //       Icon(
+                //         Icons.skip_previous,
+                //         color: kPrimaryColor,
+                //         size: 0.12 * size.width,
+                //       ),
+                //       Icon(
+                //         Icons.play_circle_outline,
+                //         color: kPrimaryColor,
+                //         size: 0.18 * size.width,
+                //       ),
+                //       Icon(
+                //         Icons.skip_next,
+                //         color: kPrimaryColor,
+                //         size: 0.12 * size.width,
+                //       ),
+                //     ],
+                //   ),
+                // )
               ],
             ),
           ),
