@@ -132,11 +132,12 @@ class _SearchPageState extends State<SearchPage> {
       title: Text(title),
       subtitle: Text(subtitle),
       leading: Container(
-        child: Image.network(image),
+        // child: Image.network(image),
         height: 95,
         width: 95,
         decoration: BoxDecoration(
-            //image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
+            image:
+                DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
             borderRadius: BorderRadius.circular(10.0)),
       ),
     );
