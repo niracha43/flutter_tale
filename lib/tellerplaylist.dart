@@ -38,6 +38,7 @@ class _TellerPlayListState extends State<TellerPlayList> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: widget.storyteller.stColor ?? yellowColor,
       appBar: AppBar(
         backgroundColor: widget.storyteller.stColor ?? yellowColor,
@@ -61,45 +62,47 @@ class _TellerPlayListState extends State<TellerPlayList> {
         elevation: 0.0,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: BlocBuilder<TellerBloc, TellerState>(
-              builder: (context, state) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 6,
-                      child: Text(
-                        widget.storyteller.stName ?? "",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 28.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+          Container(
+            height: 0.25 * size.height - 7,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: BlocBuilder<TellerBloc, TellerState>(
+                builder: (context, state) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 6,
+                        child: Text(
+                          widget.storyteller.stName ?? "",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 28.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                          maxLines: 2,
                         ),
-                        maxLines: 2,
                       ),
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                        child: Image.network(widget.storyteller.imageUrl,
-                            width: 180, height: 180, fit: BoxFit.cover),
+                      Expanded(
+                        flex: 4,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          child: Image.network(widget.storyteller.imageUrl,
+                              width: 150, height: 150, fit: BoxFit.cover),
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              },
+                    ],
+                  );
+                },
+              ),
             ),
           ),
-          SizedBox(height: 20),
           Container(
-            height: 0.6 * size.height,
+            height: 0.63 * size.height,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -111,7 +114,7 @@ class _TellerPlayListState extends State<TellerPlayList> {
             child: Column(
               children: [
                 Container(
-                  height: 0.6 * size.height,
+                  height: 0.63 * size.height,
                   child: BlocBuilder<VideoBloc, VideoState>(
                     bloc: videoBloc,
                     builder: (context, state) {
@@ -153,11 +156,11 @@ Widget _buildSonglistItem(
     title: Text(title ?? ''),
     subtitle: Text(date.toString() ?? ''),
     leading: Container(
-      child: image != null ? Image.network(image) : null,
+      //child: image != null ? Image.network(image) : null,
       height: 50,
       width: 70,
       decoration: BoxDecoration(
-          //image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
+          image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
           borderRadius: BorderRadius.circular(10.0)),
     ),
   );

@@ -62,7 +62,7 @@ class _AllvideoState extends State<Allvideo> {
         child: Column(
           children: <Widget>[
             Container(
-              height: size.height - 113,
+              height: size.height - 114,
               width: size.height,
               child: BlocBuilder<VideoBloc, VideoState>(
                 bloc: videoBloc,
@@ -104,11 +104,12 @@ class _AllvideoState extends State<Allvideo> {
       title: Text(title),
       subtitle: Text(subtitle),
       leading: Container(
-        child: Image.network(image),
+        // child: Image.network(image),
         height: 70,
         width: 70,
         decoration: BoxDecoration(
-            //image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
+            image:
+                DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
             borderRadius: BorderRadius.circular(10.0)),
       ),
     );

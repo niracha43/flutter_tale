@@ -60,23 +60,21 @@ class _HomePageState extends State<HomePage> {
         //   )
         // ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: size.height * 0.72,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildNavigationRail(context),
-                  _buildPlaylistAndSongs(size, videoBloc)
-                ],
-              ),
+      body: Stack(
+        children: [
+          Container(
+            height: size.height,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildNavigationRail(context),
+                _buildPlaylistAndSongs(size, videoBloc),
+              ],
             ),
-            _buildCurrentPlaying(size),
-            _buildBottomBar(),
-          ],
-        ),
+          ),
+          // _buildCurrentPlaying(size),
+          Positioned(bottom: 0, child: _buildBottomBar()),
+        ],
       ),
     );
   }
@@ -178,7 +176,7 @@ class _HomePageState extends State<HomePage> {
           }),
         ),
         Container(
-          height: 0.35 * size.height,
+          height: 0.50 * size.height,
           width: size.width * 0.8,
           child: BlocBuilder<VideoBloc, VideoState>(
             buildWhen: (previous, current) =>
@@ -268,10 +266,11 @@ class _HomePageState extends State<HomePage> {
       subtitle: Text(subtitle),
       leading: Container(
         child: Image.network(image),
-        height: 50,
-        width: 50,
+        height: 65,
+        width: 60,
         decoration: BoxDecoration(
-            //image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
+            // image:
+            //     DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
             borderRadius: BorderRadius.circular(10.0)),
       ),
     );
@@ -283,88 +282,75 @@ class _HomePageState extends State<HomePage> {
       //   Navigator.pushNamed(context, '/allvideo');
       // },
       child: Container(
-        height: 70,
+        height: 80,
         padding: EdgeInsets.symmetric(horizontal: 40.0),
         decoration: BoxDecoration(
-            color: kSecondaryColor,
+            color: kWhiteColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(50.0),
                 topRight: Radius.circular(50.0))),
-        child: Row(
-          children: [
-            CircleAvatar(
-                radius: 25,
-                backgroundImage: AssetImage('assets/images/1.jpeg')),
-            SizedBox(
-              width: 10.0,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Rewrite the stars',
-                  style: TextStyle(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15),
-                ),
-                Text(
-                  'Zac Effron',
-                  style: TextStyle(color: kLightColor2, fontSize: 12),
-                )
-              ],
-            ),
-            Expanded(
-              child: Container(),
-            ),
-            Icon(
-              Icons.favorite_border,
-              color: kPrimaryColor,
-            ),
-            SizedBox(width: 10.0),
-            Container(
-              height: 30,
-              width: 30,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadiusDirectional.circular(10.0),
-                  color: Colors.white),
-              child: Icon(
-                Icons.pause,
-                color: kPrimaryColor,
-              ),
-            )
-          ],
-        ),
+        // child: Row(
+        //   children: [
+        //     CircleAvatar(
+        //         radius: 25,
+        //         backgroundImage: AssetImage('assets/images/1.jpeg')),
+        //     SizedBox(
+        //       width: 10.0,
+        //     ),
+        //     Column(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       crossAxisAlignment: CrossAxisAlignment.start,
+        //       children: [
+        //         Text(
+        //           'Rewrite the stars',
+        //           style: TextStyle(
+        //               color: kPrimaryColor,
+        //               fontWeight: FontWeight.bold,
+        //               fontSize: 15),
+        //         ),
+        //         Text(
+        //           'Zac Effron',
+        //           style: TextStyle(color: kLightColor2, fontSize: 12),
+        //         )
+        //       ],
+        //     ),
+        //     Expanded(
+        //       child: Container(),
+        //     ),
+        //     Icon(
+        //       Icons.favorite_border,
+        //       color: kPrimaryColor,
+        //     ),
+        //     SizedBox(width: 10.0),
+        //     Container(
+        //       height: 30,
+        //       width: 30,
+        //       decoration: BoxDecoration(
+        //           borderRadius: BorderRadiusDirectional.circular(10.0),
+        //           color: Colors.white),
+        //       child: Icon(
+        //         Icons.pause,
+        //         color: kPrimaryColor,
+        //       ),
+        //     )
+        //   ],
+        // ),
       ),
     );
   }
 
-  void _onItemTap(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   Widget _buildBottomBar() {
-    int _selectedIndex = 0;
-
-    // List items = [
-    //   LineariconsFree.home,
-    //   Octicons.search,
-    //   Icons.notifications_none,
-    //   Icons.person_outline
-    // ];
     return Container(
-      height: 65,
-      color: kSecondaryColor,
+      height: 70,
+      width: MediaQuery.of(context).size.width,
+      color: kWhiteColor,
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(50),
               topRight: Radius.circular(50),
             ),
-            color: kWhiteColor),
+            color: kSecondaryColor),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Row(
@@ -385,45 +371,55 @@ class _HomePageState extends State<HomePage> {
 
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                FlatButton(
-                    onPressed: () {
-                      // Navigator.pop(context);
-                    },
-                    child: Icon(
-                      Octicons.home,
-                      color: kPrimaryColor,
-                    )),
-                FlatButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SearchPage()));
-                    },
-                    child: Icon(
-                      Octicons.search,
-                      color: kPrimaryColor,
-                    )),
-                FlatButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NotificationPage()));
-                    },
-                    child: Icon(
-                      Icons.notifications_none,
-                      color: kPrimaryColor,
-                    )),
-                FlatButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Allvideo()));
-                    },
-                    child: Icon(
-                      Icons.content_copy_rounded,
-                      color: kPrimaryColor,
-                    )),
+                Expanded(
+                  child: FlatButton(
+                      onPressed: () {
+                        // Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Octicons.home,
+                        color: kWhiteColor,
+                      )),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SearchPage()));
+                      },
+                      child: Icon(
+                        Octicons.search,
+                        color: kWhiteColor,
+                      )),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NotificationPage()));
+                      },
+                      child: Icon(
+                        Icons.notifications_none,
+                        color: kWhiteColor,
+                      )),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Allvideo()));
+                      },
+                      child: Icon(
+                        Icons.content_copy_rounded,
+                        color: kWhiteColor,
+                      )),
+                ),
               ]),
         ),
       ),

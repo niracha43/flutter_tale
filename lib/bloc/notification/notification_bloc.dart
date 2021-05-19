@@ -40,22 +40,22 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     NotificationEvent event,
   ) async* {
     if (event is NotificationEvent) {
-      yield state.copyWith(status: NotificationStateStatus.initial);
-      try {
-        List<NotificationModel> _notificationList =
-            await TellerService().getNotificationList();
-        yield _notificationList.isEmpty
-            ? state.copyWith(notification: [])
-            : state.copyWith(
-                status: NotificationStateStatus.success,
-                notification: _notificationList,
-              );
-      } on Exception {
-        yield state.copyWith(
-          status: NotificationStateStatus.failure,
-          notification: [],
-        );
-      }
+      // yield state.copyWith(status: NotificationStateStatus.initial);
+      //try {
+      List<NotificationModel> _notificationList =
+          await TellerService().getNotificationList();
+      yield _notificationList.isEmpty
+          ? state.copyWith(notification: [])
+          : state.copyWith(
+              status: NotificationStateStatus.success,
+              notification: _notificationList,
+            );
+      //  } on Exception {
+      //     yield state.copyWith(
+      //       status: NotificationStateStatus.failure,
+      //       notification: [],
+      //     );
+      //   }
     }
   }
 }

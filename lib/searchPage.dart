@@ -79,7 +79,7 @@ class _SearchPageState extends State<SearchPage> {
                 controller: __searchcontroller,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.search),
-                  hintText: 'Search Video',
+                  hintText: 'Search Video name or Video channel',
                   border: const OutlineInputBorder(
                     borderRadius: const BorderRadius.all(
                       const Radius.circular(30.0),
@@ -89,7 +89,7 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
             Container(
-              height: size.height - 209,
+              height: size.height - 210,
               width: size.height,
               child: BlocBuilder<VideoBloc, VideoState>(
                 bloc: videoBloc,
@@ -123,17 +123,18 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget _buildSonglistItem(
-      {@required String image,
-      @required String title,
-      @required String subtitle}) {
+  Widget _buildSonglistItem({
+    @required String image,
+    @required String title,
+    @required String subtitle,
+  }) {
     return ListTile(
       title: Text(title),
       subtitle: Text(subtitle),
       leading: Container(
         child: Image.network(image),
-        height: 70,
-        width: 70,
+        height: 95,
+        width: 95,
         decoration: BoxDecoration(
             //image: DecorationImage(image: NetworkImage(image), fit: BoxFit.fill),
             borderRadius: BorderRadius.circular(10.0)),

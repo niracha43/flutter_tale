@@ -63,39 +63,19 @@ class _NotificationPageState extends State<NotificationPage> {
         alignment: Alignment.topCenter,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Card(
-            elevation: 5.0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(40.0),
-            ),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 100,
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    width: 55.0,
-                    height: 55.0,
-                    child: BlocBuilder<NotificationBloc, NotificationState>(
-                      bloc: notificationBloc,
-                      builder: (context, state) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListView.builder(
-                            itemCount: state.notification.length,
-                            itemBuilder: (context, index) =>
-                                _ListItemNotificate(state.notification[index]),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          child: BlocBuilder<NotificationBloc, NotificationState>(
+            bloc: notificationBloc,
+            builder: (context, state) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: state.notification.length,
+                    itemBuilder: (context, index) {
+                      return _ListItemNotificate(state.notification[index]);
+                    }),
+              );
+            },
           ),
         ),
       ),
@@ -125,32 +105,41 @@ class _NotificationPageState extends State<NotificationPage> {
       },
       child: Container(
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             CircleAvatar(
               backgroundImage: NetworkImage(data.imageSt),
             ),
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(data.videoName,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold)),
-                ),
-                Text("${data.date}", style: TextStyle(color: Colors.grey)),
-              ],
+            Expanded(
+              flex: 5,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(data.videoName,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  Text("${data.date}", style: TextStyle(color: Colors.grey)),
+                ],
+              ),
             ),
             Container(
               alignment: Alignment.center,
               padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: Image.network(
-                data.imageUrl,
-                height: 110,
-                width: 100,
-              ),
+              // child: Image.network(
+              //   data.imageUrl,
+              //   height: 110,
+              //   width: 100,
+              // ),
+              height: 80,
+              width: 80,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(data.imageUrl), fit: BoxFit.fill),
+                  borderRadius: BorderRadius.circular(10.0)),
             )
           ],
         ),
