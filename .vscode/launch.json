@@ -8,6 +8,12 @@
             "name": "mobile_project",
             "request": "launch",
             "type": "dart"
+        },
+        {
+            "name": "mobile_project (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
         }
     ]
 }
